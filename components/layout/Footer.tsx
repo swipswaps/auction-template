@@ -84,19 +84,16 @@ const Footer = () => {
 						justifyContent: "center",
 					}}
 				>
-					<Typography.Paragraph>
-						© 2020 - {new Date().getFullYear()} Lukas Weidich, Joyce Marvin
-						Rafflenbeul
+					<Typography.Paragraph style={{ fontSize: "12px" }}>
+						© 2020 - {new Date().getFullYear()} L. Weidich, J. M. Rafflenbeul
 					</Typography.Paragraph>
-					<ExternalLink href={quikkHref} icon={false}>
-						<Image
-							width={imgWidth / 1.5}
-							src={quikk_software_logo}
-							preview={false}
-							alt="QUIKK Software Logo"
-						/>
-					</ExternalLink>
-					<Typography.Paragraph style={{ margin: 0 }}>
+					<Image
+						width={imgWidth / 1.5}
+						src={quikk_software_logo}
+						preview={false}
+						alt="QUIKK Software Logo"
+					/>
+					<Typography.Paragraph style={{ fontSize: "12px", marginTop: ".5em" }}>
 						Published by{" "}
 						<ExternalLink href={quikkHref}>QUIKK Software</ExternalLink>
 					</Typography.Paragraph>
