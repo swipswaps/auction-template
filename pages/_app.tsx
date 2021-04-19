@@ -1,17 +1,21 @@
 import "../styles/globals.css";
 import React from "react";
-import Head from "next/head";
+import "antd/dist/antd.css";
+import { BackTop } from "antd";
+import DefaultSEO from "../components/meta/DefaultSEO";
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
 
 const _app = ({ Component, pageProps }) => {
 	return (
 		<>
-			<Head>
-				<meta
-					name="viewport"
-					content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
-				/>
-			</Head>
-			<Component {...pageProps} />
+			<DefaultSEO />
+			<Header />
+			<main>
+				<Component {...pageProps} />
+			</main>
+			<Footer />
+			<BackTop />
 		</>
 	);
 };

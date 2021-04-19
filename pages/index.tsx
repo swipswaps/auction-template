@@ -1,9 +1,14 @@
 import React from "react";
+import Features from "../components/index/Features";
+import Hero from "../components/index/Hero";
+import Usage from "../components/index/Usage";
 
 const index = () => {
 	return (
 		<div>
-			<p>Hello World!</p>
+			<Hero />
+			<Features />
+			<Usage />
 		</div>
 	);
 };
