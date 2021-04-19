@@ -20,11 +20,9 @@ const Hero = () => {
 						descriptions within seconds and increase your recognition value.
 						Secure, free to use and without registration - forever.
 					</Typography.Paragraph>
-					<Button type="primary">
-						<InternalLink href="/editor" minimal>
-							<a>Create an Auction Template</a>
-						</InternalLink>
-					</Button>
+					<InternalLink href="/editor">
+						<Button type="primary">Create an Auction Template</Button>
+					</InternalLink>
 				</Col>
 				<Col md={24} lg={10}>
 					<Image

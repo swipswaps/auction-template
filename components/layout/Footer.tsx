@@ -83,7 +83,7 @@ const Footer = () => {
 					}}
 				>
 					<Typography.Paragraph>
-						© 2020 - {new Date().getFullYear()} · Made by Lukas Weidich and
+						© 2020 - {new Date().getFullYear()} Lukas Weidich,
 						Joyce Marvin Rafflenbeul
 					</Typography.Paragraph>
 					<ExternalLink href={quikkHref}>
