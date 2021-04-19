@@ -7,3 +7,7 @@
 #__next > main {
 	flex: 1 1 auto;
 }
+
+.ant-drawer-close {
+	padding: 0px !important;
+}

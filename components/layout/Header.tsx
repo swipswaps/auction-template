@@ -7,7 +7,7 @@ import {
 	FormOutlined,
 	HomeOutlined,
 } from "@ant-design/icons";
-import { MenuOutlined } from "@ant-design/icons";
+import { MenuOutlined, CloseOutlined } from "@ant-design/icons";
 import InternalLink from "../misc/InternalLink";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 
@@ -78,7 +78,14 @@ const Header = () => {
 				placement="right"
 				closable
 				onClose={closeDrawer}
-				visible={visible}
+				closeIcon={
+					<Container style={{ margin: "calc(1em - 2px) 0" }}>
+						<Button onClick={closeDrawer}>
+							<CloseOutlined />
+						</Button>
+					</Container>
+				}
+				visible={!md && visible}
 				bodyStyle={{ paddingTop: 0 }}
 			>
 				{headerLinks.map((link, i) => (
