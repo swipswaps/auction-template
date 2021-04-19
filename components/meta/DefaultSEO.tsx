@@ -75,6 +75,7 @@ const DefaultSEO = () => {
 			<meta httpEquiv="language" content={DEFAULT_LANGUAGE} />
 			<meta name="language" content={DEFAULT_LANGUAGE} />
 			<link rel="shortcut icon" href="/favicon.ico" />
+			<link rel="apple-touch-icon" href="/favicon.ico" />
 		</Head>
 	);
 };
