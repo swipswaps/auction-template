@@ -15,11 +15,6 @@ const Container = ({ children, spacing = false, hero = false, ...props }) => {
 					margin-right: auto;
 					margin-left: auto;
 				}
-				@media (min-width: 576px) {
-					.quikkontainer {
-						max-width: calc(540px - ${paddingInPx * 2}px) !important;
-					}
-				}
 				@media (min-width: 768px) {
 					.quikkontainer {
 						max-width: calc(720px - ${paddingInPx * 2}px) !important;
