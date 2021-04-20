@@ -9,11 +9,11 @@ const Hero = () => {
 		<Container spacing hero>
 			<Row align="middle" gutter={gutter}>
 				<Col md={24} lg={14}>
-					<Typography.Title level={1}>
+					<Typography.Title>
 						Create attractive eBay listings with Auction Template
 					</Typography.Title>
-					<Typography.Title level={4}>
-						Free to use. No Registration. Lightning fast.
+					<Typography.Title level={2} style={{ marginTop: 0 }}>
+						No cost. No Registration. Lightning fast.
 					</Typography.Title>
 					<Typography.Paragraph type="secondary">
 						Use Auction Template to automatically generate your own eBay product

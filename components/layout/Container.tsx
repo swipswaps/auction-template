@@ -20,7 +20,8 @@ const Container = ({
 					padding: ${spacing ? 64 * (hero && md ? 3 : 1) : 0}px ${paddingInPx}px;
 					margin-right: auto;
 					margin-left: auto;
-					background: ${bg ? "#fcfcfc" : null};
+					background: ${bg ? "#fbfbfb" : null};
+					border: ${bg ? "1px solid #f0f0f0" : null};
 				}
 				@media (min-width: 768px) {
 					.quikkontainer {
