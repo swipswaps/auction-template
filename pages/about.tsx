@@ -11,7 +11,7 @@ import TitleAndDesc from "../components/meta/TitleAndDesc";
 const about = () => {
 	return (
 		<Container spacing>
-			<TitleAndDesc title="About" desc="About Auction Template." />
+			<TitleAndDesc title="About" desc="About" />
 			<Typography.Title>About</Typography.Title>
 			<Typography.Paragraph>
 				Auction Template allows users to automatically generate attractive

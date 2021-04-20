@@ -4,6 +4,8 @@ import { EbayStatusCode } from "./ebayApi";
 import { sanitizeUriComponent } from "./misc";
 
 const validateStatus = (status) => true;
+const sanitizeSiteId = (siteId: AllowedEbaySiteId): String =>
+	!!siteId ? `?siteId=${sanitizeUriComponent(siteId)}` : "";
 export interface IGetItemResponse {
 	item?: EbayItem;
 	status: EbayStatusCode;
@@ -20,9 +22,7 @@ export const getItemRequest = async (
 		data: IGetItemResponse;
 	} = await axios.get(
 		encodeURI(
-			`api/items/${sanitizeUriComponent(itemId)}${
-				!!siteId ? `?siteId=${sanitizeUriComponent(siteId)}` : ""
-			}`,
+			`api/items/${sanitizeUriComponent(itemId)}${sanitizeSiteId(siteId)}`,
 		),
 		{ validateStatus },
 	);
@@ -45,9 +45,7 @@ export const getSellerItemsRequest = async (
 		data: IGetSellerItemsResponse;
 	} = await axios.get(
 		encodeURI(
-			`api/sellers/${sanitizeUriComponent(sellerId)}${
-				!!siteId ? `?siteId=${sanitizeUriComponent(siteId)}` : ""
-			}`,
+			`api/sellers/${sanitizeUriComponent(sellerId)}${sanitizeSiteId(siteId)}`,
 		),
 		{ validateStatus },
 	);

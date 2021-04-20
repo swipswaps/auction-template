@@ -34,7 +34,7 @@ const editor = () => {
 
 	return (
 		<Container spacing>
-			<TitleAndDesc title="Editor" desc="Auction Template Editor." />
+			<TitleAndDesc title="Editor" desc="Editor" />
 			<Typography.Paragraph>Editor coming soon</Typography.Paragraph>
 			<Button
 				loading={itemLoading}

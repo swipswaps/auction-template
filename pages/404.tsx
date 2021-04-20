@@ -3,13 +3,14 @@ import React from "react";
 import Container from "../components/layout/Container";
 import TitleAndDesc from "../components/meta/TitleAndDesc";
 
-const notfound = () => {
+const _404 = () => {
 	return (
 		<Container spacing>
-			<TitleAndDesc title="404" desc="Auction Template 404." />
-			<Typography.Paragraph>404 coming soon</Typography.Paragraph>
+			<TitleAndDesc title="404" desc="404" />
+			<Typography.Title>404</Typography.Title>
+			<Typography.Paragraph>Page not found.</Typography.Paragraph>
 		</Container>
 	);
 };
 
-export default notfound;
+export default _404;
