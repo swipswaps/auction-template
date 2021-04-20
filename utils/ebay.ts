@@ -1,24 +1,25 @@
-export interface IEbayItemSeller {
+import { DEFAULT_SITE_ID } from "./ebayApi";
+export type EbayItemSeller = {
 	UserID: String;
 	FeedbackRatingStar: String;
 	FeedbackScore: Number;
 	PositiveFeedbackPercent: Number;
-}
+};
 
-export interface IEbayItemPrice {
+export type EbayItemPrice = {
 	Value: Number;
 	CurrencyID: String;
-}
+};
 
-export interface IEbayItemStorefront {
+export type EbayItemStorefront = {
 	StoreURL: String;
 	StoreName: String;
-}
+};
 
-export interface IEbayItemNameValuePair {
+export type EbayItemNameValuePair = {
 	Name: String;
 	Value: Array<String>;
-}
+};
 
 /**
  * reduced properties, since not all are needed
@@ -35,24 +36,24 @@ export type EbayItem = {
 	PrimaryCategoryID?: String;
 	PrimaryCategoryName?: String;
 	Quantity: Number;
-	Seller: IEbayItemSeller;
-	ConvertedCurrentPrice: IEbayItemPrice;
-	CurrentPrice: IEbayItemPrice;
+	Seller: EbayItemSeller;
+	ConvertedCurrentPrice: EbayItemPrice;
+	CurrentPrice: EbayItemPrice;
 	ListingStatus?: String;
 	QuantitySold?: Number;
 	Site?: String;
 	TimeLeft?: String;
 	Title: String;
 	BuyItNowAvailable?: true;
-	ConvertedBuyItNowPrice?: IEbayItemPrice;
+	ConvertedBuyItNowPrice?: EbayItemPrice;
 	PaymentMethods?: Array<String>;
-	MinimumToBid?: IEbayItemPrice;
+	MinimumToBid?: EbayItemPrice;
 	ItemSpecifics?: {
-		NameValueList?: Array<IEbayItemNameValuePair>;
+		NameValueList?: Array<EbayItemNameValuePair>;
 	};
 	HitCount?: Number;
 	PrimaryCategoryIDPath?: String;
-	Storefront?: IEbayItemStorefront;
+	Storefront?: EbayItemStorefront;
 	Country?: String;
 	HandlingTime?: Number;
 	ConditionID?: Number;
@@ -63,15 +64,38 @@ export type EbayItem = {
 	AvailableForPickupDropOff?: boolean;
 };
 
-export interface IEbayError {
+export type EbayPrimaryCategory = {
+	categoryId: String;
+	categoryName: String;
+};
+
+/**
+ * reduced properties, since not all are needed
+ */
+export type EbayPreviewItem = {
+	itemId: String;
+	title: String;
+	globalId: EbaySiteGlobalId;
+	primaryCategory: EbayPrimaryCategory;
+	galleryURL: String;
+	viewItemURL: String;
+};
+
+export type EbayError = {
 	ShortMessage: String;
 	LongMessage: String;
 	ErrorCode: String;
 	SeverityCode: String;
 	ErrorClassification: String;
-}
+};
 
-export type EbayErrors = Array<IEbayError>;
+export type EbayErrorObject = {
+	error: {
+		message: String;
+	};
+};
+
+export type EbayErrors = Array<EbayError>;
 
 export type EbaySiteId =
 	| 0
@@ -145,15 +169,15 @@ export type EbaySiteGlobalId =
 	| "EBAY-PL"
 	| "EBAY-SG";
 
-export interface IEbayMapping {
+export type EbayMapping = {
 	siteId: EbaySiteId;
 	siteName: EbaySiteName;
 	globalId: EbaySiteGlobalId;
-}
+};
 
 export type AllowedEbaySiteId = EbaySiteId | Number | String;
 
-export const eBaySiteIdMappings: Array<IEbayMapping> = [
+export const eBaySiteIdMappings: Array<EbayMapping> = [
 	{ siteId: 0, siteName: "eBay United States", globalId: "EBAY-US" },
 	{ siteId: 2, siteName: "eBay Canada (English)", globalId: "EBAY-ENCA" },
 	{ siteId: 3, siteName: "eBay UK", globalId: "EBAY-GB" },
@@ -179,9 +203,12 @@ export const eBaySiteIdMappings: Array<IEbayMapping> = [
 ];
 
 export const getMappingFromSiteId = (
-	siteId: AllowedEbaySiteId,
-): IEbayMapping => {
-	return eBaySiteIdMappings.find(
-		(eBaySiteIdMapping) => Number(eBaySiteIdMapping.siteId) === Number(siteId),
+	siteId: AllowedEbaySiteId = DEFAULT_SITE_ID,
+): EbayMapping => {
+	return (
+		eBaySiteIdMappings.find(
+			(eBaySiteIdMapping) =>
+				Number(eBaySiteIdMapping.siteId) === Number(siteId),
+		) ?? eBaySiteIdMappings[0]
 	);
 };

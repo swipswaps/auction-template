@@ -6,13 +6,19 @@ import {
 	initialEbayItemReducerState,
 	IEbayItemReducer,
 } from "./reducers/ebayItemReducer";
+import {
+	IEbaySellerReducer,
+	initialEbaySellerReducerState,
+} from "./reducers/ebaySellerReducer";
 
 export interface IStore {
 	ebayItem: IEbayItemReducer;
+	ebaySeller: IEbaySellerReducer;
 }
 
 const initialStore: IStore = {
 	ebayItem: initialEbayItemReducerState,
+	ebaySeller: initialEbaySellerReducerState,
 };
 
 const middleware = [thunk];

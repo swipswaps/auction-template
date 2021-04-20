@@ -1,6 +1,7 @@
+import { EbayStatusCode } from "./../utils/ebayApi";
 import { getItemRequest } from "../utils/api";
 import { AllowedEbaySiteId } from "../utils/ebay";
-import { getFeedbackMessageForSingleItemRequest } from "../utils/ebayFrontend";
+import { getFeedbackMessageForRequest } from "../utils/ebayFrontend";
 import { EbayItemFetchState } from "./types";
 
 export const getItem = (itemId: string, siteId?: AllowedEbaySiteId) => async (
@@ -11,8 +12,12 @@ export const getItem = (itemId: string, siteId?: AllowedEbaySiteId) => async (
 	});
 	try {
 		const { item, status, message } = await getItemRequest(itemId, siteId);
-		getFeedbackMessageForSingleItemRequest(status, message);
-		if (!!item && Object.keys(item).length > 0)
+		getFeedbackMessageForRequest(status, message);
+		if (
+			!!item &&
+			Object.keys(item).length > 0 &&
+			status !== EbayStatusCode.Failure
+		)
 			dispatch({
 				type: EbayItemFetchState.Success,
 				payload: { item, status, message },

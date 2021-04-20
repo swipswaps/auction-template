@@ -4,7 +4,7 @@ import { EbayErrors, EbayItem } from "../../../utils/ebay";
 import {
 	buildEndpointForItem,
 	EbayStatusCode,
-	getServerErrorMessageForItem,
+	getServerErrorMessage,
 	getSuccessMessageForItem,
 	getWarningOrErrorMessageForItem,
 } from "../../../utils/ebayApi";
@@ -18,6 +18,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 				const {
 					query: { itemId, siteId },
 				} = req;
+
 				const {
 					data: { Item: item, Ack: status, Errors: errors },
 				}: {
@@ -58,7 +59,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	} catch (err) {
 		res.status(500).json({
 			status: EbayStatusCode.Failure,
-			message: getServerErrorMessageForItem(),
+			message: getServerErrorMessage(),
 		});
 	}
 };

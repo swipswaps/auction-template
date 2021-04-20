@@ -1,7 +1,7 @@
 import { EbayStatusCode } from "./ebayApi";
 import { message } from "antd";
 
-export const getFeedbackMessageForSingleItemRequest = (
+export const getFeedbackMessageForRequest = (
 	status: EbayStatusCode,
 	messageString: String,
 ) => {
