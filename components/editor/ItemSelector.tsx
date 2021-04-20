@@ -12,6 +12,7 @@ import { getSellerItems } from "../../actions/ebaySellerActions";
 import { EbayStatusCode } from "../../utils/ebayApi";
 import InternalLink from "../misc/InternalLink";
 import { getItem } from "../../actions/ebayItemActions";
+import { formItemAlignment } from "../../utils/applicationConstants";
 
 const ItemSelector = () => {
 	const dispatch = useDispatch();
@@ -48,7 +49,7 @@ const ItemSelector = () => {
 	return (
 		<>
 			{itemIdKnown ? (
-				<Form.Item label="Enter the eBay item id">
+				<Form.Item {...formItemAlignment} label="Enter the eBay item id">
 					<Input
 						placeholder="eBay item id"
 						prefix={<TagOutlined />}
@@ -60,7 +61,7 @@ const ItemSelector = () => {
 				</Form.Item>
 			) : (
 				<>
-					<Form.Item label="Enter your eBay seller name">
+					<Form.Item {...formItemAlignment} label="Enter your eBay seller name">
 						<Input.Search
 							enterButton
 							placeholder="eBay seller name"
@@ -73,7 +74,7 @@ const ItemSelector = () => {
 							loading={sellerLoading}
 						/>
 					</Form.Item>
-					<Form.Item label="Select an eBay item">
+					<Form.Item {...formItemAlignment} label="Select an eBay item">
 						<Select
 							showSearch
 							optionFilterProp="children"
@@ -95,14 +96,14 @@ const ItemSelector = () => {
 					</Form.Item>
 				</>
 			)}
-			<Form.Item>
+			<Form.Item {...formItemAlignment}>
 				<Checkbox onChange={handleAgreedToTermsToggle} checked={agreedToTerms}>
 					I agree to Auction Template's{" "}
 					<InternalLink href="/privacy">Privacy Policy</InternalLink> and{" "}
 					<InternalLink href="/terms">Terms of Use</InternalLink>.
 				</Checkbox>
 			</Form.Item>
-			<Form.Item>
+			<Form.Item {...formItemAlignment}>
 				<Button
 					type="primary"
 					htmlType="submit"

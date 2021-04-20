@@ -1,1 +1,2 @@
-export const sanitizeUriComponent = (x: any) => String(encodeURIComponent(x));
+export const sanitizeUriComponent = (uriComponent: any) =>
+	String(encodeURIComponent(uriComponent));

@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col, Switch, Form, Select } from "antd";
-import { gutter } from "../../utils/applicationConstants";
+import { formItemAlignment } from "../../utils/applicationConstants";
 import Tooltip from "../misc/Tooltip";
 import { eBaySiteIdMappings } from "../../utils/ebay";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,11 +16,12 @@ const EditorSettings = () => {
 	const handleSiteIdSelect = (siteId) => dispatch(setSiteId(Number(siteId)));
 
 	return (
-		<Row gutter={gutter}>
+		<Row>
 			<Col xs={24} md={12}>
 				<Form.Item
+					{...formItemAlignment}
 					label={
-						<Tooltip tooltipText="If you don't know the eBay item id, enter your eBay seller name and search for a listing">
+						<Tooltip text="If you don't know the eBay item id, enter your eBay seller name and search for a listing">
 							Load listing by entering eBay item id
 						</Tooltip>
 					}
@@ -30,8 +31,9 @@ const EditorSettings = () => {
 			</Col>
 			<Col xs={24} md={12}>
 				<Form.Item
+					{...formItemAlignment}
 					label={
-						<Tooltip tooltipText="Please select the country you are using eBay from">
+						<Tooltip text="Please select the country you are using eBay from">
 							eBay country
 						</Tooltip>
 					}

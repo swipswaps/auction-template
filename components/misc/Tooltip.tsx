@@ -4,16 +4,16 @@ import { QuestionCircleOutlined } from "@ant-design/icons";
 
 const Tooltip = ({
 	children,
-	tooltipText,
+	text,
 }: {
 	children: ReactNode;
-	tooltipText: String;
+	text: String;
 }) => {
 	return (
 		<span>
 			{children}{" "}
 			<span>
-				<AntdTooltip title={tooltipText}>
+				<AntdTooltip title={text}>
 					<QuestionCircleOutlined />
 				</AntdTooltip>
 			</span>
