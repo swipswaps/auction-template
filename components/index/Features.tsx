@@ -24,7 +24,7 @@ const Features = () => {
 			icon: <CreditCardOutlined />,
 			title: "Free to use",
 			description:
-				"Auction Template is an open source project and thus will always be available in a free version.",
+				"Auction Template is and will always be free to use, as it is a project that is very close to our hearts.",
 		},
 		{
 			icon: <LockOutlined />,
