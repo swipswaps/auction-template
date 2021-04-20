@@ -52,7 +52,7 @@ const Features = () => {
 		},
 	];
 	return (
-		<Container spacing>
+		<Container spacing bg>
 			<Typography.Title level={2}>Features</Typography.Title>
 			<Row gutter={gutter}>
 				{features.map((feature, i) => (

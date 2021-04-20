@@ -1,7 +1,13 @@
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import React from "react";
 
-const Container = ({ children, spacing = false, hero = false, ...props }) => {
+const Container = ({
+	children,
+	spacing = false,
+	hero = false,
+	bg = false,
+	...props
+}) => {
 	const { md } = useBreakpoint();
 	const paddingInPx = 42;
 	return (
@@ -14,6 +20,7 @@ const Container = ({ children, spacing = false, hero = false, ...props }) => {
 					padding: ${spacing ? 64 * (hero && md ? 3 : 1) : 0}px ${paddingInPx}px;
 					margin-right: auto;
 					margin-left: auto;
+					background: ${bg ? "#fcfcfc" : null};
 				}
 				@media (min-width: 768px) {
 					.quikkontainer {

@@ -14,11 +14,11 @@ const about = () => {
 			<TitleAndDesc title="About" desc="About Auction Template." />
 			<Typography.Title>About</Typography.Title>
 			<Typography.Paragraph>
-				Auction Template allows users to automatically create attractive product
-				descriptions for existing eBay listings. Unlike other solutions on the
-				Internet, our editor is completely free to use and fully automated. It
-				is connected to official eBay interfaces, so there is no need for manual
-				maintenance of product information.
+				Auction Template allows users to automatically generate attractive
+				product descriptions for eBay listings. Unlike other solutions on the
+				Internet, our editor is fully automated, completely free to use and
+				requires no registration. We work with official eBay interfaces which
+				make tedious and manual maintenance of product information obsolete.
 			</Typography.Paragraph>
 			<Typography.Title level={2}>Our Motivation</Typography.Title>
 			<Typography.Paragraph>

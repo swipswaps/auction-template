@@ -32,7 +32,7 @@ const Footer = () => {
 						alt="eBay Developers Program Member Logo"
 					/>
 				</ExternalLink>
-				<Typography.Paragraph type="secondary">
+				<Typography.Paragraph>
 					Auction Template is not owned or operated by eBay Inc. eBay and the
 					eBay logo are registered trademarks of eBay Inc.
 				</Typography.Paragraph>
@@ -40,6 +40,14 @@ const Footer = () => {
 					<ExternalLink href={ebayPoliciesHref}>
 						eBay Listing Policies {new Date().getFullYear()}
 					</ExternalLink>
+				</Typography.Paragraph>
+				<Divider />
+				<Typography.Paragraph style={smallFont} type="secondary">
+					Auction Template allows users to automatically generate attractive
+					product descriptions for eBay listings. Unlike other solutions on the
+					Internet, our editor is fully automated, completely free to use and
+					requires no registration. We work with official eBay interfaces which
+					make tedious and manual maintenance of product information obsolete.
 				</Typography.Paragraph>
 				<Divider />
 				<span
