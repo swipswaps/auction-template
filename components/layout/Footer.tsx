@@ -5,11 +5,8 @@ import ebay_dev_program_logo from "../../assets/ebay/ebay_developers_program_mem
 import quikk_software_logo from "../../assets/quikk/quikk_software_logo.svg";
 import ExternalLink from "../misc/ExternalLink";
 import InternalLink from "../misc/InternalLink";
-import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 
 const Footer = () => {
-	const breakpoints = useBreakpoint();
-	const { md } = breakpoints;
 	const imgWidth = 100;
 	const quikkHref = "https://quikk.de";
 	const ebayPoliciesHref =
@@ -21,43 +18,12 @@ const Footer = () => {
 		{ displayText: "Terms", href: "/terms" },
 	];
 
+	const smallFont = { fontSize: "12px", margin: 0 };
+
 	return (
 		<footer>
 			<Divider style={{ margin: 0 }} />
 			<Container spacing>
-				<Typography.Paragraph>
-					{footerLinks.map((link, i) => (
-						<span key={i}>
-							{i !== 0 && <>{" · "}</>}
-							<InternalLink href={link.href}>{link.displayText}</InternalLink>
-						</span>
-					))}
-				</Typography.Paragraph>
-				<Divider />
-				{md && (
-					<Typography.Paragraph type="secondary" style={{ fontSize: "12px" }}>
-						Auction Template offers you a free and advanced editor to create
-						eBay product description templates which are exclusively developed
-						with HTML and CSS. We have taken into account all the important eBay
-						guidelines {new Date().getFullYear()} (Responsive, HTTPS/SSL, no
-						active content with JavaScript, etc.) so that you get a holistic and
-						satisfying solution with the Auction Template open source project.
-						Our eBay ad templates are professionally developed and focus on a
-						consistent and reputable appearance for your eBay store with the
-						goal to provide modern auction templates tailored especially for
-						your eBay listings. Hopefully, Auction Template can increase the
-						attractiveness of your listings and help with creating a unique
-						recognition value through a consistent and professional appearance.
-						Unlike other providers, Auction Template participates in eBays
-						developers program and thus has access to official and secured data
-						sources from eBay. Through these APIs we receive the information and
-						images of your items that you would otherwise have had to enter in
-						tedious double maintenance. The automatically generated auction
-						template from Auction Template can be easily edited with our
-						innovative editor and the generated HTML code can be directly
-						inserted into the product descriptions of your eBay listings.
-					</Typography.Paragraph>
-				)}
 				<ExternalLink href={ebayDevHref} icon={false}>
 					<Image
 						width={imgWidth}
@@ -66,14 +32,14 @@ const Footer = () => {
 						alt="eBay Developers Program Member Logo"
 					/>
 				</ExternalLink>
+				<Typography.Paragraph type="secondary">
+					Auction Template is not owned or operated by eBay Inc. eBay and the
+					eBay logo are registered trademarks of eBay Inc.
+				</Typography.Paragraph>
 				<Typography.Paragraph>
 					<ExternalLink href={ebayPoliciesHref}>
 						eBay Listing Policies {new Date().getFullYear()}
 					</ExternalLink>
-				</Typography.Paragraph>
-				<Typography.Paragraph type="secondary" style={{ fontSize: "12px" }}>
-					Auction Template is not owned or operated by eBay Inc. eBay and the
-					eBay logo are registered trademarks of eBay Inc.
 				</Typography.Paragraph>
 				<Divider />
 				<span
@@ -84,7 +50,15 @@ const Footer = () => {
 						justifyContent: "center",
 					}}
 				>
-					<Typography.Paragraph style={{ fontSize: "12px" }}>
+					<Typography.Paragraph>
+						{footerLinks.map((link, i) => (
+							<span key={i}>
+								{i !== 0 && <>{" · "}</>}
+								<InternalLink href={link.href}>{link.displayText}</InternalLink>
+							</span>
+						))}
+					</Typography.Paragraph>
+					<Typography.Paragraph style={smallFont}>
 						© 2020 - {new Date().getFullYear()} L. Weidich, J. M. Rafflenbeul
 					</Typography.Paragraph>
 					<Image
@@ -92,8 +66,9 @@ const Footer = () => {
 						src={quikk_software_logo}
 						preview={false}
 						alt="QUIKK Software Logo"
+						style={{ margin: ".5em 0 .243em" }}
 					/>
-					<Typography.Paragraph style={{ fontSize: "12px", marginTop: ".5em" }}>
+					<Typography.Paragraph style={smallFont}>
 						Published by{" "}
 						<ExternalLink href={quikkHref}>QUIKK Software</ExternalLink>
 					</Typography.Paragraph>
