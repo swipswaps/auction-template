@@ -5,11 +5,12 @@ import { BackTop, Alert } from "antd";
 import DefaultSEO from "../components/meta/DefaultSEO";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
-import Container from "../components/layout/Container";
+import { Provider } from "react-redux";
+import store from "../store";
 
 const _app = ({ Component, pageProps }) => {
 	return (
-		<>
+		<Provider store={store}>
 			<DefaultSEO />
 			<Alert
 				message="Under development"
@@ -24,7 +25,7 @@ const _app = ({ Component, pageProps }) => {
 			</main>
 			<Footer />
 			<BackTop />
-		</>
+		</Provider>
 	);
 };
 

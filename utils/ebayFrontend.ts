@@ -1,14 +1,14 @@
-import { EbayStatusCodes } from "./ebayApi";
+import { EbayStatusCode } from "./ebayApi";
 import { message } from "antd";
 
 export const getFeedbackMessageForSingleItemRequest = (
-	status: EbayStatusCodes,
+	status: EbayStatusCode,
 	messageString: String,
 ) => {
 	message[
-		status === EbayStatusCodes.Success
+		status === EbayStatusCode.Success
 			? "success"
-			: status === EbayStatusCodes.Warning
+			: status === EbayStatusCode.Warning
 			? "warning"
 			: "error"
 	](messageString);

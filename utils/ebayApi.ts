@@ -1,12 +1,6 @@
-import {
-	AllowedEbaySiteId,
-	EbayErrors,
-	EbaySiteId,
-	getMappingFromSiteId,
-	EbayItem,
-} from "./ebay";
+import { AllowedEbaySiteId, EbayErrors, EbayItem } from "./ebay";
 
-export enum EbayStatusCodes {
+export enum EbayStatusCode {
 	Success = "Success",
 	Warning = "Warning",
 	Failure = "Failure",
@@ -14,7 +8,7 @@ export enum EbayStatusCodes {
 
 export const DEFAULT_PAGE_NUMBER: Number = 1;
 export const DEFAULT_ENTRIES_PER_PAGE: Number = 100;
-export const DEFAULT_SITE_ID: EbaySiteId = 0;
+export const DEFAULT_SITE_ID: AllowedEbaySiteId = 0;
 
 export const GET_SINGLE_ITEM_ENDPOINT =
 	"https://open.api.ebay.com/shopping?callname=GetSingleItem";

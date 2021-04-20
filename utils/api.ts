@@ -1,21 +1,21 @@
 import axios from "axios";
 import { EbayItem, AllowedEbaySiteId } from "./ebay";
-import { EbayStatusCodes } from "./ebayApi";
+import { EbayStatusCode } from "./ebayApi";
 
-export interface ISingleItemResponse {
+export interface IGetItemResponse {
 	item?: EbayItem;
-	status: EbayStatusCodes;
+	status: EbayStatusCode;
 	message: String;
 }
 
-export const getItem = async (
+export const getItemRequest = async (
 	itemId: string,
 	siteId?: AllowedEbaySiteId,
-): Promise<ISingleItemResponse> => {
+): Promise<IGetItemResponse> => {
 	const {
 		data: { item, status, message },
 	}: {
-		data: ISingleItemResponse;
+		data: IGetItemResponse;
 	} = await axios.get(
 		`api/items/${itemId}${!!siteId ? `?siteId=${siteId}` : ""}`,
 		{ validateStatus: (status) => true },

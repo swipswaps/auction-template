@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { EbayErrors, EbayItem } from "../../../utils/ebay";
 import {
 	buildEndpointForItem,
-	EbayStatusCodes,
+	EbayStatusCode,
 	getServerErrorMessageForItem,
 	getSuccessMessageForItem,
 	getWarningOrErrorMessageForItem,
@@ -21,25 +21,25 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 				const {
 					data: { Item: item, Ack: status, Errors: errors },
 				}: {
-					data: { Item: EbayItem; Ack: EbayStatusCodes; Errors: EbayErrors };
+					data: { Item: EbayItem; Ack: EbayStatusCode; Errors: EbayErrors };
 				} = await axios.get(
 					buildEndpointForItem(String(itemId), String(siteId)),
 				);
 
 				switch (status) {
-					case EbayStatusCodes.Success:
+					case EbayStatusCode.Success:
 						res
 							.status(200)
 							.json({ item, status, message: getSuccessMessageForItem(item) });
 						break;
-					case EbayStatusCodes.Warning:
+					case EbayStatusCode.Warning:
 						res.status(200).json({
 							item,
 							status,
 							message: getWarningOrErrorMessageForItem(errors),
 						});
 						break;
-					case EbayStatusCodes.Failure:
+					case EbayStatusCode.Failure:
 						res.status(404).json({
 							status,
 							message: getWarningOrErrorMessageForItem(errors),
@@ -57,7 +57,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		}
 	} catch (err) {
 		res.status(500).json({
-			status: EbayStatusCodes.Failure,
+			status: EbayStatusCode.Failure,
 			message: getServerErrorMessageForItem(),
 		});
 	}
