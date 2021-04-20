@@ -1,34 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Generate eBay descriptions on the fly 🚀
 
-## Getting Started
+## About Auction Template
 
-First, run the development server:
+Auction Template provides a free and easy to use way to create a consistent and professional look and feel for listings of eBay sellers.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Auction Template automatically generates attractive and customizable product descriptions for existing eBay listings. Unlike other solutions on the internet, the editor is fully automated and connected to official eBay interfaces, so there is no need for any manual maintenance of product information such as pictures or features.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Our API
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Feel free to use the api we provide at `/api/items/<itemId>` to retrieve item data in JSON format, or get an overview of all items of a specific seller at `/api/sellers/<sellerId>` in JSON format as well.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+> Disclaimer: API is not tested yet and might not be publicly available for free in the future.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Optional query parameters
 
-## Learn More
+Both API endpoints take `siteId` an as optional query parameter to specify the eBay country. Please include the siteId whenever possible to prevent any unwanted side effects. If not provided, `siteId` defaults to `0`. Refer to the [official eBay documentation](https://developer.ebay.com/DevZone/merchandising/docs/Concepts/SiteIDToGlobalID.html) for more information.
 
-To learn more about Next.js, take a look at the following resources:
+### Examples
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### `GET /api/items/402610080980?siteId=77`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+> Retrieves information for a single listing.
 
-## Deploy on Vercel
+Returns a JSON object containing following keys:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `item`: A JSON object containing the properties of the requested item. Click [here](https://developer.ebay.com/devzone/shopping/docs/callref/getsingleitem.html) for eBays documentation on the GetSingleItem endpoint.
+- `message`: A string containing a human readable description of the request result.
+- `status`: "Success" || "Warning" || "Failure"
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+#### `GET /api/sellers/trademax-24?siteId=77`
+
+> Retrieves all active listings of a seller.
+
+Returns a JSON object containing following keys:
+
+- `items`: An array of items. Be aware that this endpoint does not provide detailed information or pictures of the item, just a preview image and general information. Click [here](https://developer.ebay.com/DevZone/finding/CallRef/findItemsAdvanced.html) for eBays documentation on the FindItemsAdvanced endpoint.
+- `message`: A string containing a human readable description of the request result.
+- `status`: "Success" || "Warning" || "Failure"

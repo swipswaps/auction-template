@@ -6,9 +6,9 @@ module.exports = withPWA(
 	withImages({
 		pwa: {
 			dest: "public",
+			register: true,
 			runtimeCaching,
 			disable: process.env.NODE_ENV === "development",
-			register: true,
 		},
 		future: { webpack5: true },
 	}),
