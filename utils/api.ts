@@ -13,7 +13,7 @@ export interface IGetItemResponse {
 }
 
 export const getItemRequest = async (
-	itemId: string,
+	itemId: String,
 	siteId?: AllowedEbaySiteId,
 ): Promise<IGetItemResponse> => {
 	const {
@@ -36,7 +36,7 @@ export interface IGetSellerItemsResponse {
 }
 
 export const getSellerItemsRequest = async (
-	sellerId: String,
+	sellerName: String,
 	siteId?: AllowedEbaySiteId,
 ): Promise<IGetSellerItemsResponse> => {
 	const {
@@ -45,7 +45,7 @@ export const getSellerItemsRequest = async (
 		data: IGetSellerItemsResponse;
 	} = await axios.get(
 		encodeURI(
-			`api/sellers/${sanitizeUriComponent(sellerId)}${sanitizeSiteId(siteId)}`,
+			`api/sellers/${sanitizeUriComponent(sellerName)}${sanitizeSiteId(siteId)}`,
 		),
 		{ validateStatus },
 	);

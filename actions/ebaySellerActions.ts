@@ -2,35 +2,43 @@ import { getSellerItemsRequest } from "../utils/api";
 import { AllowedEbaySiteId } from "../utils/ebay";
 import { EbayStatusCode } from "../utils/ebayApi";
 import { getFeedbackMessageForRequest } from "../utils/ebayFrontend";
-import { EbaySellerFetchState } from "./types";
+import { EbaySellerAction } from "./types";
 
 export const getSellerItems = (
-	sellerId: string,
+	sellerName: String,
 	siteId?: AllowedEbaySiteId,
 ) => async (dispatch) => {
-	dispatch({
-		type: EbaySellerFetchState.Start,
-	});
-	try {
-		const { items, status, message } = await getSellerItemsRequest(
-			sellerId,
-			siteId,
-		);
-		getFeedbackMessageForRequest(status, message);
-		if (!!items && items.length > 0 && status !== EbayStatusCode.Failure)
+	if (sellerName.length > 0) {
+		dispatch({
+			type: EbaySellerAction.Start,
+		});
+
+		try {
+			const { items, status, message } = await getSellerItemsRequest(
+				sellerName,
+				siteId,
+			);
+			getFeedbackMessageForRequest(status, message);
+			if (!!items && Array.isArray(items) && status !== EbayStatusCode.Failure)
+				dispatch({
+					type: EbaySellerAction.Success,
+					payload: { items, status, message },
+				});
+			else {
+				dispatch({
+					type: EbaySellerAction.Failure,
+					payload: { status, message },
+				});
+			}
+		} catch (err) {
 			dispatch({
-				type: EbaySellerFetchState.Success,
-				payload: { items, status, message },
-			});
-		else {
-			dispatch({
-				type: EbaySellerFetchState.Failure,
-				payload: { status, message },
+				type: EbaySellerAction.Failure,
 			});
 		}
-	} catch (err) {
-		dispatch({
-			type: EbaySellerFetchState.Failure,
-		});
+	} else {
+		getFeedbackMessageForRequest(
+			EbayStatusCode.Failure,
+			"Please enter a seller name",
+		);
 	}
 };

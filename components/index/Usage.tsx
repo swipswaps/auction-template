@@ -14,9 +14,9 @@ const Usage = () => {
 	const steps = [
 		{
 			icon: <TagOutlined />,
-			title: "Load article",
+			title: "Load eBay item",
 			description:
-				"Find your item by the unique eBay item number or select it directly from your store. Auction Template takes care of the rest and retrieves all relevant information.",
+				"Find your item by the unique eBay item Number or select it directly from your store. Auction Template takes care of the rest and retrieves all relevant information.",
 		},
 		{
 			icon: <OrderedListOutlined />,
@@ -38,7 +38,7 @@ const Usage = () => {
 		},
 		{
 			icon: <TrophyOutlined />,
-			title: "Relax",
+			title: "Relax!",
 			description:
 				"Because in the buying process of online shopping, meaningful product descriptions and appealing product images are elementary for a purchase decision.",
 		},

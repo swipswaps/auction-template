@@ -15,7 +15,7 @@ export enum EbayStatusCode {
 	Failure = "Failure",
 }
 
-export const DEFAULT_PAGE_NUMBER: Number = 1;
+export const DEFAULT_PAGE_Number: Number = 1;
 export const DEFAULT_ENTRIES_PER_PAGE: Number = 100;
 export const DEFAULT_SITE_ID: AllowedEbaySiteId = 0;
 
@@ -35,28 +35,28 @@ export const GET_SELLER_ITEMS_ENDPOINT =
 export const GET_SELLER_ITEMS_SELLER_FILTER =
 	"itemFilter(0).name=Seller&itemFilter(0).value(0)";
 
-export const GET_SELLER_ITEMS_PAGE_NUMBER = "paginationInput.pageNumber";
+export const GET_SELLER_ITEMS_PAGE_Number = "paginationInput.pageNumber";
 
 export const GET_SELLER_ITEMS_ENTRIES_PER_PAGE =
 	"paginationInput.entriesPerPage";
 
 export const buildEndpointForItem = (
-	itemId: string,
+	itemId: String,
 	siteId: AllowedEbaySiteId = DEFAULT_SITE_ID,
 ) =>
 	`${GET_SINGLE_ITEM_ENDPOINT}&appid=${process.env.EBAY_APP_ID}&siteid=${siteId}&ItemID=${itemId}&${GET_SINGLE_ITEM_VERSION}&${GET_SINGLE_ITEM_RESPONSE_ENCODING}&${GET_SINGLE_ITEM_SELECTOR}`;
 
 export const buildEndpointForSeller = (
-	sellerId: String,
+	sellerName: String,
 	siteId: AllowedEbaySiteId = DEFAULT_SITE_ID,
-	pageNumber: Number = DEFAULT_PAGE_NUMBER,
+	pageNumber: Number = DEFAULT_PAGE_Number,
 	entriesPerPage: Number = DEFAULT_ENTRIES_PER_PAGE,
 ) =>
 	`${GET_SELLER_ITEMS_ENDPOINT}&SECURITY-APPNAME=${
 		process.env.EBAY_APP_ID
 	}&GLOBAL-ID=${
 		getMappingFromSiteId(Number(!!siteId ? siteId : DEFAULT_SITE_ID)).globalId
-	}&${GET_SELLER_ITEMS_SELLER_FILTER}=${sellerId}&${GET_SELLER_ITEMS_PAGE_NUMBER}=${pageNumber}&${GET_SELLER_ITEMS_ENTRIES_PER_PAGE}=${entriesPerPage}`;
+	}&${GET_SELLER_ITEMS_SELLER_FILTER}=${sellerName}&${GET_SELLER_ITEMS_PAGE_Number}=${pageNumber}&${GET_SELLER_ITEMS_ENTRIES_PER_PAGE}=${entriesPerPage}`;
 
 export interface IGetAllSellerItemsRecursively {
 	items?: Array<EbayPreviewItem>;
@@ -65,15 +65,15 @@ export interface IGetAllSellerItemsRecursively {
 }
 
 export const getAllSellerItemsRecursively = async (
-	sellerId: String,
+	sellerName: String,
 	siteId: AllowedEbaySiteId = DEFAULT_SITE_ID,
 	sellerItems: Array<any> = [],
-	pageNumber: Number = DEFAULT_PAGE_NUMBER,
+	pageNumber: Number = DEFAULT_PAGE_Number,
 	totalPages: Number = Infinity,
 ): Promise<IGetAllSellerItemsRecursively> => {
 	try {
 		const { data: dataInXml } = await axios.get(
-			buildEndpointForSeller(sellerId, siteId, pageNumber),
+			buildEndpointForSeller(sellerName, siteId, pageNumber),
 		);
 
 		const dataInJson = await parseStringPromise(dataInXml, {
@@ -95,7 +95,7 @@ export const getAllSellerItemsRecursively = async (
 				sellerItems.push(...items);
 				if (pageNumber < totalPages) {
 					return getAllSellerItemsRecursively(
-						sellerId,
+						sellerName,
 						siteId,
 						sellerItems,
 						Number(pageNumber) + 1,
@@ -107,7 +107,7 @@ export const getAllSellerItemsRecursively = async (
 				return {
 					errorObject: {
 						error: {
-							message: `Seller ${sellerId} currently has no listings in ${
+							message: `Seller ${sellerName} currently has no listings in ${
 								getMappingFromSiteId(siteId).siteName
 							}.`,
 						},
@@ -123,7 +123,7 @@ export const getAllSellerItemsRecursively = async (
 			status: EbayStatusCode.Failure,
 			errorObject: {
 				error: {
-					message: getErrorMessageForSeller(sellerId),
+					message: getErrorMessageForSeller(sellerName),
 				},
 			},
 		};
@@ -141,12 +141,12 @@ export const getServerErrorMessage = () =>
 
 export const getSuccessMessageForSellerItems = (
 	items: Array<EbayPreviewItem>,
-	sellerId: String,
-) => `Successfully loaded ${items.length} items from ${sellerId}.`;
+	sellerName: String,
+) => `Successfully loaded ${items.length} items from ${sellerName}.`;
 
 export const getWarningOrErrorMessageForSellerItem = (
 	errorObject: EbayErrorObject,
 ) => `${errorObject.error.message}`;
 
-export const getErrorMessageForSeller = (sellerId) =>
-	`An error occured when trying to load items of ${sellerId} for this particular eBay country.`;
+export const getErrorMessageForSeller = (sellerName) =>
+	`An error occured when trying to load items of ${sellerName} for this particular eBay country.`;

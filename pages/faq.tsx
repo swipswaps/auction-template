@@ -6,40 +6,32 @@ import TitleAndDesc from "../components/meta/TitleAndDesc";
 
 const faq = () => {
 	const faqContent = [
-		{ question: "What is Auction Template?", answer: "" },
 		{
-			question: "Was unterscheidet Auction Template von der Konkurrenz?",
+			question: "What is Auction Template?",
+			answer:
+				"Auction Template is a free online tool that allows users to automatically generate attractive product descriptions for eBay listings. It has an automated editor that provides many choices, design- and contentwise. Unlike other solutions on the Internet, our editor is fully automated, completely free to use and requires no registration. We work with official eBay interfaces which make tedious and manual maintenance of product information obsolete and hope to beautify your eBay listings.",
+		},
+		{
+			question: "What makes Auction Template different?",
+			answer: "",
+		},
+		{ question: "How do I use the editor?", answer: "" },
+		{
+			question: "How can I customize a template?",
 			answer: "",
 		},
 		{
-			question: "Welche Richtlinien muss ein eBay Template erfüllen?",
-			answer: "",
-		},
-		{ question: "Ist Auction Template eBay Richtlinien konform?", answer: "" },
-		{ question: "Ist Auction Template sicher?", answer: "" },
-		{ question: "Ist Auction Template wirklich kostenlos?", answer: "" },
-		{ question: "Wie kann ich ein eBay Produkt einladen?", answer: "" },
-		{
-			question:
-				"Wie viele Auktionsvorlagen kann ich mit Auction Template erstellen?",
+			question: "How do I add a template to my eBay listing?",
 			answer: "",
 		},
 		{
-			question: "Kann ich Auktionsvorlagen für mehrere eBay Konten erstellen?",
+			question: "Are there any advantages/offers for (small) businesses?",
 			answer: "",
 		},
-		{
-			question: "Lassen sich die generierten Auktionsvorlagen anpassen?",
-			answer: "",
-		},
-		{
-			question: "Wie füge ich die Auktionsvorlage meinem eBay Inserat hinzu?",
-			answer: "",
-		},
-		{ question: "Gibt es Vorteile für Gewerbetreibende?", answer: "" },
-		{ question: "Wie kann ich die Entwickler kontaktieren?", answer: "" },
-		{ question: "Ich habe weitere Fragen", answer: "" },
+		{ question: "How can I contact the developers?", answer: "" },
+		{ question: "I have more questions", answer: "" },
 	];
+
 	return (
 		<Container spacing>
 			<TitleAndDesc title="FAQ" desc="FAQ" />
@@ -51,7 +43,11 @@ const faq = () => {
 			<Collapse defaultActiveKey={[0]} accordion>
 				{faqContent.map(({ question, answer }, i) => (
 					<Panel header={question} key={i}>
-						<Typography.Paragraph>{answer}</Typography.Paragraph>
+						<Typography.Paragraph>
+							{!!answer
+								? answer
+								: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."}
+						</Typography.Paragraph>
 					</Panel>
 				))}
 			</Collapse>

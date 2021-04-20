@@ -14,7 +14,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		switch (method) {
 			case "GET":
 				const {
-					query: { sellerId, siteId },
+					query: { sellerName, siteId },
 				} = req;
 
 				const {
@@ -22,7 +22,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 					errorObject,
 					status,
 				} = await getAllSellerItemsRecursively(
-					String(sellerId),
+					String(sellerName),
 					String(siteId),
 				);
 
@@ -31,7 +31,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 						res.status(200).json({
 							items,
 							status,
-							message: getSuccessMessageForSellerItems(items, String(sellerId)),
+							message: getSuccessMessageForSellerItems(items, String(sellerName)),
 						});
 						break;
 					case EbayStatusCode.Warning:

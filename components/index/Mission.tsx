@@ -14,7 +14,7 @@ const Mission = () => {
 			src: checkout,
 		},
 		{
-			title: "Display your products the way they deserve it",
+			title: "Showcase your products the way they deserve it",
 			content:
 				"Show off your eBay ads using Auction Template! Auction Template offers you a free and advanced editor to create amazing eBay product description templates which are exclusively developed with HTML and CSS. Our templates are fully compliant with the latest eBay guidelines for listings, including responsiveness, HTTPS/SSL and are using no active content like JavaScript.",
 			src: product,

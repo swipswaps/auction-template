@@ -14,44 +14,50 @@ const about = () => {
 			<TitleAndDesc title="About" desc="About" />
 			<Typography.Title>About</Typography.Title>
 			<Typography.Paragraph>
-				Auction Template allows users to automatically generate attractive
-				product descriptions for eBay listings. Unlike other solutions on the
-				Internet, our editor is fully automated, completely free to use and
-				requires no registration. We work with official eBay interfaces which
-				make tedious and manual maintenance of product information obsolete.
+				Auction Template is a free online tool that allows users to
+				automatically generate attractive product descriptions for eBay
+				listings. It has an automated editor that provides many choices, design-
+				and contentwise. Unlike other solutions on the Internet, our editor is
+				fully automated, completely free to use and requires no registration. We
+				work with official eBay interfaces which make tedious and manual
+				maintenance of product information obsolete and hope to beautify your
+				eBay listings.
 			</Typography.Paragraph>
 			<Typography.Title level={2}>Our Motivation</Typography.Title>
 			<Typography.Paragraph>
-				Among many of our friends, the demand for a free solution to create
-				attractive eBay auction templates without manual effort increased at the
-				beginning of 2020. So both of us, Lukas and Joyce, decided to take the
-				project into our own hands and put it into action while studying for our
-				bachelor's degree in computer science. In the meantime, Auction Template
-				has developed into the third iteration and became a project close to our
-				hearts. The goal is and remains the free and automated provision of
-				modern auction templates tailored especially for your eBay listings. We
-				hope to increase the attractiveness of your listings and help with
-				creating a unique recognition value through a consistent and
-				professional appearance and are already working on further features.
+				Among many of our friends, the demand for a tool to create attractive
+				eBay descriptions without manual effort increased at the beginning of
+				2020. So both of us, Lukas and Joyce, decided to take the project into
+				our own hands and put it into action while studying for our bachelor's
+				degree in computer science. In the meantime, Auction Template has
+				developed into the third iteration, as we were trying out new
+				technologies and framework across the npm ecosystem, and became a
+				project close to our hearts. The goal is and remains the free and
+				automated provision of modern auction templates tailored especially for
+				your eBay listings. We hope to increase the attractiveness of your
+				listings and help with creating a unique recognition value through a
+				consistent and professional appearance.
 			</Typography.Paragraph>
 			<Typography.Title level={2}>Contact</Typography.Title>
 			<Typography.Paragraph>
-				We are at your disposal for questions, feature requests or cooperations.
-				To track any problems, bugs or feature requests, we work with GitHub
-				Issues. The link to the repository can be found below.
+				We are at your disposal for any questions, feature requests or
+				cooperations. To track any problems, bugs or feature requests, we work
+				with GitHub Issues. The link to the source code repository can be found
+				below.
 			</Typography.Paragraph>
 			<Typography.Title level={2}>Roadmap</Typography.Title>
 			<Typography.Paragraph>
-				For future versions of Auction Template, we are planning the addition of
-				translations into multiple languages as well as an improved eBay
-				integration, so that the product description no longer has to be
-				inserted manually. This will also provide the ability to create and
-				include a description for multiple (or all) listings of a seller with
-				one click. With an optional user account, it should be possible to save
-				texts and reuse them across all listings. Joyce and I are pursuing these
-				ambitious goals in addition to our regular jobs and our master's degree
-				in computer science. That's why we appreciate any support in the form of
-				feedback, participation or a donation.
+				For future versions of Auction Template, we are planning to add multiple
+				translations as well as an improved eBay integration, so that the
+				product description will no longer have to be inserted manually. Going
+				further, this will also provide the ability to create and include a
+				description for multiple (or all) listings of a seller with one click,
+				and the possibility to connect multiple listings. With an optional user
+				account, we plan to save content like texts, descriptions and images to
+				reuse them across all listings of one seller. Joyce and I are pursuing
+				these ambitious goals in addition to our regular jobs and our master's
+				degree in computer science. That's why we appreciate any support in the
+				form of feedback, participation or a donation.
 			</Typography.Paragraph>
 			<Typography.Title level={2}>Support us</Typography.Title>
 			<Typography.Paragraph>

@@ -11,17 +11,11 @@ export const UseOfEbayData = () => (
 			benutzen, stimmen Sie zu, dass ein Teil der von Ihnen bei eBay angefragten
 			und von Ihnen im weiteren Verlauf verwendeten Daten bei uns gespeichert
 			und verarbeitet wird. Folgende Inhalte speichern wir bei jedem Einladen
-			eines Artikels:
+			eines Artikels über unseren Editor:
 		</Typography.Paragraph>
 		<ul>
-			<li>eBay Artikelnummer</li>
-			<li>eBay Nutzername des Verkaufenden</li>
-			<li>Postleitzahl des Verkaufenden wie von eBay übermittelt</li>
-			<li>Stadt des Verkaufenden wie von eBay übermittelt</li>
-			<li>eBay URL des Artikels</li>
-			<li>eBay Titel des Artikels</li>
-			<li>eBay Kategorie des Artikels</li>
-			<li>eBay Kategorienummer des Artikels</li>
+			<li>Die über unseren Editor angefragte eBay Artikelnummer</li>
+			<li>Nutzername des eBay Accounts, der diesen Artikel anbietet</li>
 			<li>Datum und Uhrzeit der Anfrage</li>
 		</ul>
 		<Typography.Paragraph>

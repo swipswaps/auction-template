@@ -209,6 +209,13 @@ export const getMappingFromSiteId = (
 		eBaySiteIdMappings.find(
 			(eBaySiteIdMapping) =>
 				Number(eBaySiteIdMapping.siteId) === Number(siteId),
-		) ?? eBaySiteIdMappings[0]
+		) ??
+		eBaySiteIdMappings[
+			eBaySiteIdMappings.indexOf(
+				eBaySiteIdMappings.filter(
+					(eBaySiteIdMapping) => eBaySiteIdMapping.siteId === DEFAULT_SITE_ID,
+				)[0],
+			)
+		]
 	);
 };

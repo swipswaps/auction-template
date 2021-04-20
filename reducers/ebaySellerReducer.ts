@@ -1,4 +1,4 @@
-import { EbaySellerFetchState } from "../actions/types";
+import { EbaySellerAction } from "../actions/types";
 import { EbayPreviewItem } from "../utils/ebay";
 import { EbayStatusCode } from "../utils/ebayApi";
 
@@ -19,18 +19,19 @@ export const initialEbaySellerReducerState: IEbaySellerReducer = {
 const ebayItemReducer = (state = initialEbaySellerReducerState, action) => {
 	const { type, payload } = action;
 	switch (type) {
-		case EbaySellerFetchState.Start:
+		case EbaySellerAction.Start:
 			return {
 				...state,
 				loading: true,
+				items: null,
 			};
-		case EbaySellerFetchState.Success:
+		case EbaySellerAction.Success:
 			return {
 				...state,
 				loading: false,
 				...payload,
 			};
-		case EbaySellerFetchState.Failure:
+		case EbaySellerAction.Failure:
 			return {
 				...state,
 				items: null,
