@@ -24,7 +24,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 				}: {
 					data: { Item: EbayItem; Ack: EbayStatusCode; Errors: EbayErrors };
 				} = await axios.get(
-					buildEndpointForItem((itemId), (siteId)),
+					buildEndpointForItem(String(itemId), String(siteId)),
 				);
 
 				switch (status) {
