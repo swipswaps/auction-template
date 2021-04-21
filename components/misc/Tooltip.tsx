@@ -7,7 +7,7 @@ const Tooltip = ({
 	text,
 }: {
 	children: ReactNode;
-	text: String;
+	text: string;
 }) => {
 	return (
 		<span>

@@ -2,6 +2,7 @@ export enum EbayItemAction {
 	Start = "FETCH_ITEM_START",
 	Success = "FETCH_ITEM_SUCCESS",
 	Failure = "FETCH_ITEM_FAILURE",
+	Set = "SET_ITEM",
 }
 
 export enum EbaySellerAction {

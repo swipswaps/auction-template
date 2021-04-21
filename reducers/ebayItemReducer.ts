@@ -5,7 +5,7 @@ import { EbayStatusCode } from "../utils/ebayApi";
 export interface IEbayItemReducer {
 	item?: EbayItem | null;
 	status: EbayStatusCode | null;
-	message: String | null;
+	message: string | null;
 	loading: boolean;
 }
 
@@ -35,6 +35,11 @@ const ebayItemReducer = (state = initialEbayItemReducerState, action) => {
 				...state,
 				item: null,
 				loading: false,
+				...payload,
+			};
+		case EbayItemAction.Set:
+			return {
+				...state,
 				...payload,
 			};
 		default:

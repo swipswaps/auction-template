@@ -1,5 +1,5 @@
 import React from "react";
-import { Checkbox, Form, Input, Select, Button } from "antd";
+import { Checkbox, Form, Input, Select, Button, Image } from "antd";
 import { TagOutlined, UserOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { IStore } from "../../store";
@@ -12,7 +12,7 @@ import { getSellerItems } from "../../actions/ebaySellerActions";
 import { EbayStatusCode } from "../../utils/ebayApi";
 import InternalLink from "../misc/InternalLink";
 import { getItem } from "../../actions/ebayItemActions";
-import { formItemAlignment } from "../../utils/applicationConstants";
+import { formItemLayout } from "../../utils/applicationConstants";
 
 const ItemSelector = () => {
 	const dispatch = useDispatch();
@@ -32,28 +32,27 @@ const ItemSelector = () => {
 		(state: IStore) => state.ebayItem,
 	);
 
-	const handleItemIdChange = (itemId) => dispatch(setItemId(String(itemId)));
+	const handleItemIdChange = (itemId) => dispatch(setItemId(itemId));
 
 	const handleSellerNameChange = (sellerName) =>
-		dispatch(setSellerName(String(sellerName)));
+		dispatch(setSellerName(sellerName));
 
 	const handleSellerItemsSearch = () =>
-		dispatch(getSellerItems(String(sellerName), Number(siteId)));
+		dispatch(getSellerItems(sellerName, Number(siteId)));
 
 	const handleAgreedToTermsToggle = () =>
 		dispatch(setAgreedToTerms(!agreedToTerms));
 
-	const handleLoadItemClick = () =>
-		dispatch(getItem(String(itemId), Number(siteId)));
+	const handleLoadItemClick = () => dispatch(getItem(itemId, Number(siteId)));
 
 	return (
 		<>
 			{itemIdKnown ? (
-				<Form.Item {...formItemAlignment} label="Enter the eBay item id">
+				<Form.Item {...formItemLayout} label="Enter the eBay item id">
 					<Input
 						placeholder="eBay item id"
 						prefix={<TagOutlined />}
-						value={String(itemId)}
+						value={itemId}
 						onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
 							handleItemIdChange(e.target.value)
 						}
@@ -61,12 +60,12 @@ const ItemSelector = () => {
 				</Form.Item>
 			) : (
 				<>
-					<Form.Item {...formItemAlignment} label="Enter your eBay seller name">
+					<Form.Item {...formItemLayout} label="Enter your eBay seller name">
 						<Input.Search
 							enterButton
 							placeholder="eBay seller name"
 							prefix={<UserOutlined />}
-							value={String(sellerName)}
+							value={sellerName}
 							onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
 								handleSellerNameChange(e.target.value)
 							}
@@ -74,20 +73,20 @@ const ItemSelector = () => {
 							loading={sellerLoading}
 						/>
 					</Form.Item>
-					<Form.Item {...formItemAlignment} label="Select an eBay item">
+					<Form.Item {...formItemLayout} label="Select an eBay item">
 						<Select
 							showSearch
 							optionFilterProp="children"
 							filterOption={(input, option) =>
 								option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
 							}
-							onChange={handleItemIdChange}
-							value={String(itemId)}
+							onSelect={handleItemIdChange}
+							value={itemId}
 							disabled={status !== EbayStatusCode.Success}
 						>
 							{items?.map((item, i) => {
 								return (
-									<Select.Option value={String(item?.itemId)} key={i}>
+									<Select.Option value={item?.itemId} key={i}>
 										{item.title}
 									</Select.Option>
 								);
@@ -96,14 +95,14 @@ const ItemSelector = () => {
 					</Form.Item>
 				</>
 			)}
-			<Form.Item {...formItemAlignment}>
+			<Form.Item {...formItemLayout}>
 				<Checkbox onChange={handleAgreedToTermsToggle} checked={agreedToTerms}>
 					I agree to Auction Template's{" "}
 					<InternalLink href="/privacy">Privacy Policy</InternalLink> and{" "}
 					<InternalLink href="/terms">Terms of Use</InternalLink>.
 				</Checkbox>
 			</Form.Item>
-			<Form.Item {...formItemAlignment}>
+			<Form.Item {...formItemLayout}>
 				<Button
 					type="primary"
 					htmlType="submit"

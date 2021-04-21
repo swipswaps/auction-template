@@ -5,7 +5,7 @@ import { getFeedbackMessageForRequest } from "../utils/ebayFrontend";
 import { EbaySellerAction } from "./types";
 
 export const getSellerItems = (
-	sellerName: String,
+	sellerName: string,
 	siteId?: AllowedEbaySiteId,
 ) => async (dispatch) => {
 	if (sellerName.length > 0) {

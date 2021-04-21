@@ -1,97 +1,101 @@
 import { DEFAULT_SITE_ID } from "./ebayApi";
 export type EbayItemSeller = {
-	UserID: String;
-	FeedbackRatingStar: String;
-	FeedbackScore: Number;
-	PositiveFeedbackPercent: Number;
+	UserID: string;
+	FeedbackRatingStar: string;
+	FeedbackScore: number;
+	PositiveFeedbackPercent: number;
 };
 
 export type EbayItemPrice = {
-	Value: Number;
-	CurrencyID: String;
+	Value: number;
+	CurrencyID: string;
 };
 
 export type EbayItemStorefront = {
-	StoreURL: String;
-	StoreName: String;
+	StoreURL: string;
+	StoreName: string;
 };
 
 export type EbayItemNameValuePair = {
-	Name: String;
-	Value: Array<String>;
+	Name: string;
+	Value: Array<string>;
 };
 
 /**
  * reduced properties, since not all are needed
  */
 export type EbayItem = {
-	Description: String;
-	ItemID: String;
+	Description: string;
+	ItemID: string;
 	EndTime?: Date;
 	StartTime?: Date;
-	ViewItemURLForNaturalSearch: String;
-	GalleryURL: String;
-	PictureURL?: Array<String>;
-	PostalCode?: String;
-	PrimaryCategoryID?: String;
-	PrimaryCategoryName?: String;
-	Quantity: Number;
+	ViewItemURLForNaturalSearch: string;
+	GalleryURL: string;
+	PictureURL?: Array<string>;
+	PostalCode?: string;
+	PrimaryCategoryID?: string;
+	PrimaryCategoryName?: string;
+	Quantity: number;
 	Seller: EbayItemSeller;
 	ConvertedCurrentPrice: EbayItemPrice;
 	CurrentPrice: EbayItemPrice;
-	ListingStatus?: String;
-	QuantitySold?: Number;
-	Site?: String;
-	TimeLeft?: String;
-	Title: String;
-	BuyItNowAvailable?: true;
+	ListingStatus?: string;
+	QuantitySold?: number;
+	Site?: string;
+	TimeLeft?: string;
+	Title: string;
+	BuyItNowAvailable?: boolean;
 	ConvertedBuyItNowPrice?: EbayItemPrice;
-	PaymentMethods?: Array<String>;
+	PaymentMethods?: Array<string>;
 	MinimumToBid?: EbayItemPrice;
 	ItemSpecifics?: {
 		NameValueList?: Array<EbayItemNameValuePair>;
 	};
-	HitCount?: Number;
-	PrimaryCategoryIDPath?: String;
+	HitCount?: number;
+	PrimaryCategoryIDPath?: string;
 	Storefront?: EbayItemStorefront;
-	Country?: String;
-	HandlingTime?: Number;
-	ConditionID?: Number;
-	ConditionDisplayName?: String;
-	ConditionDescription?: String;
-	SKU?: String;
+	Country?: string;
+	HandlingTime?: number;
+	ConditionID?: number;
+	ConditionDisplayName?: string;
+	ConditionDescription?: string;
+	SKU?: string;
 	NewBestOffer?: boolean;
 	AvailableForPickupDropOff?: boolean;
+	ShippingCostSummary: {
+		ShippingServiceCost: EbayItemPrice;
+		ListedShippingServiceCost: EbayItemPrice;
+	};
 };
 
 export type EbayPrimaryCategory = {
-	categoryId: String;
-	categoryName: String;
+	categoryId: string;
+	categoryName: string;
 };
 
 /**
  * reduced properties, since not all are needed
  */
 export type EbayPreviewItem = {
-	itemId: String;
-	title: String;
+	itemId: string;
+	title: string;
 	globalId: EbaySiteGlobalId;
 	primaryCategory: EbayPrimaryCategory;
-	galleryURL: String;
-	viewItemURL: String;
+	galleryURL: string;
+	viewItemURL: string;
 };
 
 export type EbayError = {
-	ShortMessage: String;
-	LongMessage: String;
-	ErrorCode: String;
-	SeverityCode: String;
-	ErrorClassification: String;
+	ShortMessage: string;
+	LongMessage: string;
+	ErrorCode: string;
+	SeverityCode: string;
+	ErrorClassification: string;
 };
 
 export type EbayErrorObject = {
 	error: {
-		message: String;
+		message: string;
 	};
 };
 

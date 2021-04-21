@@ -12,7 +12,7 @@ export const setSiteId = (siteId: AllowedEbaySiteId) => (dispatch) => {
 	});
 };
 
-export const setItemId = (itemId: String) => (dispatch) => {
+export const setItemId = (itemId: string) => (dispatch) => {
 	dispatch({
 		type: EditorAction.ItemId,
 		payload: { itemId },
@@ -26,7 +26,7 @@ export const setItemIdKnown = (itemIdKnown: boolean) => (dispatch) => {
 	});
 };
 
-export const setSellerName = (sellerName: String) => (dispatch) => {
+export const setSellerName = (sellerName: string) => (dispatch) => {
 	dispatch({
 		type: EditorAction.SellerName,
 		payload: { sellerName },

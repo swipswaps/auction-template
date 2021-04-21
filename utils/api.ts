@@ -4,16 +4,16 @@ import { EbayStatusCode } from "./ebayApi";
 import { sanitizeUriComponent } from "./misc";
 
 const validateStatus = (status) => true;
-const sanitizeSiteId = (siteId: AllowedEbaySiteId): String =>
+const sanitizeSiteId = (siteId: AllowedEbaySiteId): string =>
 	!!siteId ? `?siteId=${sanitizeUriComponent(siteId)}` : "";
 export interface IGetItemResponse {
 	item?: EbayItem;
 	status: EbayStatusCode;
-	message: String;
+	message: string;
 }
 
 export const getItemRequest = async (
-	itemId: String,
+	itemId: string,
 	siteId?: AllowedEbaySiteId,
 ): Promise<IGetItemResponse> => {
 	const {
@@ -32,11 +32,11 @@ export const getItemRequest = async (
 export interface IGetSellerItemsResponse {
 	items?: Array<EbayPreviewItem>;
 	status: EbayStatusCode;
-	message: String;
+	message: string;
 }
 
 export const getSellerItemsRequest = async (
-	sellerName: String,
+	sellerName: string,
 	siteId?: AllowedEbaySiteId,
 ): Promise<IGetSellerItemsResponse> => {
 	const {

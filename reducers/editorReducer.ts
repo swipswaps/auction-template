@@ -3,8 +3,8 @@ import { EditorAction } from "../actions/types";
 import { AllowedEbaySiteId } from "../utils/ebay";
 
 export interface IEditorReducer {
-	sellerName: String;
-	itemId: String;
+	sellerName: string;
+	itemId: string;
 	itemIdKnown: boolean;
 	siteId: AllowedEbaySiteId;
 	agreedToTerms: boolean;

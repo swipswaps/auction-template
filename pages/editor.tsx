@@ -8,15 +8,24 @@ import TitleAndDesc from "../components/meta/TitleAndDesc";
 
 const editor = () => {
 	return (
-		<Container spacing>
-			<TitleAndDesc title="Editor" desc="Editor" />
-			<Typography.Title>Editor</Typography.Title>
-			<Typography.Title level={2}>1. Load item</Typography.Title>
-			<EditorSettings />
-			<ItemSelector />
-			<Typography.Title level={2}>2. Edit content</Typography.Title>
-			<ItemContent />
-		</Container>
+		<>
+			<Container spacing style={{ paddingBottom: 0 }}>
+				<TitleAndDesc
+					title="Auction Template Editor"
+					desc="Auction Template Editor"
+				/>
+				<Typography.Title>Auction Template Editor</Typography.Title>
+			</Container>
+			<Container spacing bg>
+				<Typography.Title level={2}>1. Load eBay item</Typography.Title>
+				<EditorSettings />
+				<ItemSelector />
+			</Container>
+			<Container spacing>
+				<Typography.Title level={2}>2. Edit content</Typography.Title>
+				<ItemContent />
+			</Container>
+		</>
 	);
 };
 

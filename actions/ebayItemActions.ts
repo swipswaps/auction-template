@@ -1,10 +1,17 @@
 import { EbayStatusCode } from "./../utils/ebayApi";
 import { getItemRequest } from "../utils/api";
-import { AllowedEbaySiteId } from "../utils/ebay";
+import { AllowedEbaySiteId, EbayItem } from "../utils/ebay";
 import { getFeedbackMessageForRequest } from "../utils/ebayFrontend";
 import { EbayItemAction } from "./types";
 
-export const getItem = (itemId: String, siteId?: AllowedEbaySiteId) => async (
+export const setItem = (item: EbayItem) => async (dispatch) => {
+	dispatch({
+		type: EbayItemAction.Set,
+		payload: { item },
+	});
+};
+
+export const getItem = (itemId: string, siteId?: AllowedEbaySiteId) => async (
 	dispatch,
 ) => {
 	if (itemId.length > 0) {

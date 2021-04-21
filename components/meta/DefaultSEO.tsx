@@ -66,8 +66,8 @@ const DefaultSEO = () => {
 			<meta name="ICBM" content={`${latitude}, ${longitude}`} />
 			<meta property="og:site_name" content={APPLICATION_NAME} />
 			<meta property="og:type" content="business.business" />
-			<meta property="og:latitude" content={String(latitude)} />
-			<meta property="og:longitude" content={String(longitude)} />
+			<meta property="og:latitude" content={(latitude)} />
+			<meta property="og:longitude" content={(longitude)} />
 			<meta property="og:locality" content={city} />
 			<meta property="og:region" content={region} />
 			<meta property="HandheldFriendly" content="yes" />

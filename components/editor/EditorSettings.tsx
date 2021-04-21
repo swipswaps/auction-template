@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col, Switch, Form, Select } from "antd";
-import { formItemAlignment } from "../../utils/applicationConstants";
+import { formItemLayout } from "../../utils/applicationConstants";
 import Tooltip from "../misc/Tooltip";
 import { eBaySiteIdMappings } from "../../utils/ebay";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,7 +19,7 @@ const EditorSettings = () => {
 		<Row>
 			<Col xs={24} md={12}>
 				<Form.Item
-					{...formItemAlignment}
+					{...formItemLayout}
 					label={
 						<Tooltip text="If you don't know the eBay item id, enter your eBay seller name and search for a listing">
 							Load listing by entering eBay item id
@@ -31,7 +31,7 @@ const EditorSettings = () => {
 			</Col>
 			<Col xs={24} md={12}>
 				<Form.Item
-					{...formItemAlignment}
+					{...formItemLayout}
 					label={
 						<Tooltip text="Please select the country you are using eBay from">
 							eBay country
@@ -42,7 +42,7 @@ const EditorSettings = () => {
 						showSearch
 						optionFilterProp="children"
 						value={Number(siteId)}
-						onChange={handleSiteIdSelect}
+						onSelect={handleSiteIdSelect}
 						filterOption={(input, option) =>
 							option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
 						}

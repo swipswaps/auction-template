@@ -3,7 +3,7 @@ import { message } from "antd";
 
 export const getFeedbackMessageForRequest = (
 	status: EbayStatusCode,
-	messageString: String,
+	messageString: string,
 ) => {
 	message[
 		status === EbayStatusCode.Success

@@ -15,8 +15,8 @@ export enum EbayStatusCode {
 	Failure = "Failure",
 }
 
-export const DEFAULT_PAGE_Number: Number = 1;
-export const DEFAULT_ENTRIES_PER_PAGE: Number = 100;
+export const DEFAULT_PAGE_Number: number = 1;
+export const DEFAULT_ENTRIES_PER_PAGE: number = 100;
 export const DEFAULT_SITE_ID: AllowedEbaySiteId = 0;
 
 export const GET_SINGLE_ITEM_ENDPOINT =
@@ -41,16 +41,16 @@ export const GET_SELLER_ITEMS_ENTRIES_PER_PAGE =
 	"paginationInput.entriesPerPage";
 
 export const buildEndpointForItem = (
-	itemId: String,
+	itemId: string,
 	siteId: AllowedEbaySiteId = DEFAULT_SITE_ID,
 ) =>
 	`${GET_SINGLE_ITEM_ENDPOINT}&appid=${process.env.EBAY_APP_ID}&siteid=${siteId}&ItemID=${itemId}&${GET_SINGLE_ITEM_VERSION}&${GET_SINGLE_ITEM_RESPONSE_ENCODING}&${GET_SINGLE_ITEM_SELECTOR}`;
 
 export const buildEndpointForSeller = (
-	sellerName: String,
+	sellerName: string,
 	siteId: AllowedEbaySiteId = DEFAULT_SITE_ID,
-	pageNumber: Number = DEFAULT_PAGE_Number,
-	entriesPerPage: Number = DEFAULT_ENTRIES_PER_PAGE,
+	pageNumber: number = DEFAULT_PAGE_Number,
+	entriesPerPage: number = DEFAULT_ENTRIES_PER_PAGE,
 ) =>
 	`${GET_SELLER_ITEMS_ENDPOINT}&SECURITY-APPNAME=${
 		process.env.EBAY_APP_ID
@@ -65,11 +65,11 @@ export interface IGetAllSellerItemsRecursively {
 }
 
 export const getAllSellerItemsRecursively = async (
-	sellerName: String,
+	sellerName: string,
 	siteId: AllowedEbaySiteId = DEFAULT_SITE_ID,
 	sellerItems: Array<any> = [],
-	pageNumber: Number = DEFAULT_PAGE_Number,
-	totalPages: Number = Infinity,
+	pageNumber: number = DEFAULT_PAGE_Number,
+	totalPages: number = Infinity,
 ): Promise<IGetAllSellerItemsRecursively> => {
 	try {
 		const { data: dataInXml } = await axios.get(
@@ -141,7 +141,7 @@ export const getServerErrorMessage = () =>
 
 export const getSuccessMessageForSellerItems = (
 	items: Array<EbayPreviewItem>,
-	sellerName: String,
+	sellerName: string,
 ) => `Successfully loaded ${items.length} items from ${sellerName}.`;
 
 export const getWarningOrErrorMessageForSellerItem = (

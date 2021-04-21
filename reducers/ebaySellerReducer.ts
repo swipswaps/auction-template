@@ -5,7 +5,7 @@ import { EbayStatusCode } from "../utils/ebayApi";
 export interface IEbaySellerReducer {
 	items?: Array<EbayPreviewItem> | null;
 	status: EbayStatusCode | null;
-	message: String | null;
+	message: string | null;
 	loading: boolean;
 }
 
