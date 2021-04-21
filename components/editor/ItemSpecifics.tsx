@@ -3,9 +3,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IStore } from "../../store";
 import { formItemLayout } from "../../utils/applicationConstants";
-import produce from "immer";
 import { EbayItem } from "../../utils/ebay";
-import { setItem } from "../../actions/ebayItemActions";
+import { addNameValuePair, setItem } from "../../actions/ebayItemActions";
 import ItemSpecific from "./ItemSpecific";
 import { PlusOutlined } from "@ant-design/icons";
 
@@ -27,20 +26,7 @@ const ItemSpecifics = () => {
 				<ItemSpecific {...{ pair, i }} key={i} />
 			))}
 			<Form.Item>
-				<Button
-					type="primary"
-					onClick={() =>
-						handleItemUpdate(
-							produce(item, (itemDraft) => {
-								itemDraft.ItemSpecifics.NameValueList.push({
-									Name: "",
-									Value: "",
-								});
-								return itemDraft;
-							}),
-						)
-					}
-				>
+				<Button type="primary" onClick={() => dispatch(addNameValuePair())}>
 					<PlusOutlined />
 				</Button>
 			</Form.Item>
