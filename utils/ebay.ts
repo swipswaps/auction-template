@@ -66,6 +66,7 @@ export type EbayItem = {
 		ShippingServiceCost: EbayItemPrice;
 		ListedShippingServiceCost: EbayItemPrice;
 	};
+	ListingType: string;
 };
 
 export type EbayPrimaryCategory = {

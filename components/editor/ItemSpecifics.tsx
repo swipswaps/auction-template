@@ -3,22 +3,13 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IStore } from "../../store";
 import { formItemLayout } from "../../utils/applicationConstants";
-import { EbayItem } from "../../utils/ebay";
-import { addNameValuePair, setItem } from "../../actions/ebayItemActions";
+import { addNameValuePair } from "../../actions/ebayItemActions";
 import ItemSpecific from "./ItemSpecific";
 import { PlusOutlined } from "@ant-design/icons";
 
 const ItemSpecifics = () => {
 	const dispatch = useDispatch();
 	const { item } = useSelector((state: IStore) => state.ebayItem);
-
-	const handleItemUpdate = (updatedItem: EbayItem) => {
-		dispatch(setItem(updatedItem));
-	};
-
-	/**
-	 * TODO: state change is not represented in ui, FIX!
-	 */
 
 	return (
 		<Form.Item {...formItemLayout} label="Edit displayed specifics">
