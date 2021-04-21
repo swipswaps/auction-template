@@ -18,7 +18,7 @@ export type EbayItemStorefront = {
 
 export type EbayItemNameValuePair = {
 	Name: string;
-	Value: Array<string>;
+	Value: string | Array<string>;
 };
 
 /**
