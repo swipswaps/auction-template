@@ -16,8 +16,14 @@ export const initialEbayItemReducerState: IEbayItemReducer = {
 	loading: false,
 };
 
-const ebayItemReducer = (state = initialEbayItemReducerState, action) => {
-	const { type, payload } = action;
+const ebayItemReducer = (
+	state = initialEbayItemReducerState,
+	action,
+): IEbayItemReducer => {
+	const {
+		type,
+		payload,
+	}: { type: EbayItemAction; payload: IEbayItemReducer } = action;
 	switch (type) {
 		case EbayItemAction.Start:
 			return {
@@ -28,7 +34,10 @@ const ebayItemReducer = (state = initialEbayItemReducerState, action) => {
 			return {
 				...state,
 				loading: false,
-				...payload,
+				item: {
+					...payload.item,
+					_displaySellerName: payload.item.Seller.UserID,
+				},
 			};
 		case EbayItemAction.Failure:
 			return {

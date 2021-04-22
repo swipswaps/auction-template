@@ -1,8 +1,11 @@
 import React from "react";
+import { EbayItem } from "../../utils/ebay";
 
-const TemplateImageGallery = ({ images }) => {
+const TemplateImageGallery = ({ item }: { item: EbayItem }) => {
 	const imgWidth = "75px";
 	const gridGap = "1em";
+	const images = item?.PictureURL;
+
 	return (
 		<>
 			<div className="gallery">
@@ -15,7 +18,11 @@ const TemplateImageGallery = ({ images }) => {
 					{images.map((image, i) => {
 						return (
 							<a key={i} className="item big-picture" href={`#item-${i + 1}`}>
-								<img src={image} />
+								<img
+									src={image}
+									alt={`${item?.Title} #${i + 1}:`}
+									title={`${item?.Title} #${i + 1}:`}
+								/>
 							</a>
 						);
 					})}

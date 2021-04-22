@@ -1,15 +1,14 @@
-import { Typography, Button } from "antd";
+import { Typography, Card } from "antd";
 import React from "react";
 import { useSelector } from "react-redux";
+import CopyTemplateToClipboardButton from "../components/editor/CopyTemplateToClipboardButton";
 import EditorSettings from "../components/editor/EditorSettings";
 import ItemContent from "../components/editor/ItemContent";
 import ItemSelector from "../components/editor/ItemSelector";
 import Container from "../components/layout/Container";
 import TitleAndDesc from "../components/meta/TitleAndDesc";
 import Solstorm from "../resources/templates/Solstorm";
-import componentToHtml from "../resources/utils/TemplateToHtml";
 import { IStore } from "../store";
-//TODO: also add form values for title, desc, price, seller etc, as it does not refresh
 
 const editor = () => {
 	const { item } = useSelector((state: IStore) => state.ebayItem);
@@ -25,29 +24,19 @@ const editor = () => {
 		},
 		{
 			title: "Edit content",
-			content: (
-				<>
-					<ItemContent />
-				</>
-			),
+			content: <ItemContent />,
 		},
 		{
-			title: "Customize auction template",
-			content: item && <Solstorm item={item} />,
+			title: "Preview auction template",
+			content: item && (
+				<Card>
+					<Solstorm item={item} />
+				</Card>
+			),
 		},
 		{
 			title: "Copy product description",
-			content: (
-				<Button
-					onClick={() => console.log(componentToHtml(<Solstorm item={item} />))}
-				>
-					Copy product description
-				</Button>
-			),
-		},
-		{
-			title: "Relax!",
-			content: <Typography.Paragraph>You are all done!</Typography.Paragraph>,
+			content: item && <CopyTemplateToClipboardButton item={item} />,
 		},
 	];
 	return (

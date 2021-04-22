@@ -1,22 +1,43 @@
 import React from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
+import { EbayItem } from "../../utils/ebay";
+import {
+	getEbayAccountUrlFromSellerName,
+	getEbayFeedbackUrlFromSellerName,
+	getEbayViewListingsUrlFromSellerName,
+} from "../utils/templateUtils";
 
-const TemplateHeader = ({
-	sellerName = "EBAY-SHOP",
-	navLinks = [
-		{ href: "#home", text: "Home" },
-		{ href: "#link", text: "Link" },
-	],
-}) => {
+const TemplateHeader = ({ item }: { item: EbayItem }) => {
+	const navLinks = [
+		{
+			href: getEbayAccountUrlFromSellerName(item?.Seller.UserID, item?.Country),
+			text: "Account",
+		},
+		{
+			href: getEbayViewListingsUrlFromSellerName(
+				item?.Seller.UserID,
+				item?.Country,
+			),
+			text: "Shop",
+		},
+		{
+			href: getEbayFeedbackUrlFromSellerName(
+				item?.Seller.UserID,
+				item?.Country,
+			),
+			text: "Reviews",
+		},
+	];
+
 	return (
 		<Navbar expand="lg" bg="primary" variant="dark" collapseOnSelect>
-			<Navbar.Brand href="#home">{sellerName}</Navbar.Brand>
+			<Navbar.Brand>{item?._displaySellerName}</Navbar.Brand>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
 			<Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
 				<Nav className="justify-content-end">
 					{navLinks.map(({ href, text }, i) => {
 						return (
-							<Nav.Link href={href} active>
+							<Nav.Link href={href} active key={i}>
 								{text}
 							</Nav.Link>
 						);

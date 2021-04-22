@@ -1,13 +1,16 @@
 import React, { useEffect } from "react";
 import { Form, Col, Row, Input, Button } from "antd";
-import { EbayItem, EbayItemNameValuePair } from "../../utils/ebay";
+import { EbayItemNameValuePair } from "../../utils/ebay";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { gutter } from "../../utils/applicationConstants";
 import { DeleteOutlined, DragOutlined } from "@ant-design/icons";
-import produce from "immer";
-import { deleteNameValuePair, setItem } from "../../actions/ebayItemActions";
-import { useDispatch, useSelector } from "react-redux";
-import { IStore } from "../../store";
+import {
+	deleteNameValuePair,
+	setNameValuePairName,
+	setNameValuePairValue,
+} from "../../actions/ebayItemActions";
+import { useDispatch } from "react-redux";
+import { sanitizeSpecificValue } from "../../utils/misc";
 
 const ItemSpecific = ({
 	pair,
@@ -18,37 +21,23 @@ const ItemSpecific = ({
 }) => {
 	const values = {
 		name: pair.Name,
-		value: Array.isArray(pair.Value) ? pair.Value.join(", ") : pair.Value,
+		value: sanitizeSpecificValue(pair.Value),
 	};
 	const [form] = Form.useForm();
 	const dispatch = useDispatch();
-	const { item } = useSelector((state: IStore) => state.ebayItem);
 	const { md } = useBreakpoint();
 
 	useEffect(() => {
 		form.setFieldsValue(values);
 	}, [form, values]);
 
-	const handleItemUpdate = (updatedItem: EbayItem) =>
-		dispatch(setItem(updatedItem));
-
 	const onDelete = () => dispatch(deleteNameValuePair(i));
 
 	const handleNameChange = (newName) =>
-		handleItemUpdate(
-			produce(item, (itemDraft) => {
-				itemDraft.ItemSpecifics.NameValueList[i].Name = newName;
-				return itemDraft;
-			}),
-		);
+		dispatch(setNameValuePairName(i, newName));
 
 	const handleValueChange = (newValue) =>
-		handleItemUpdate(
-			produce(item, (itemDraft) => {
-				itemDraft.ItemSpecifics.NameValueList[i].Value = newValue;
-				return itemDraft;
-			}),
-		);
+		dispatch(setNameValuePairValue(i, newValue));
 
 	return (
 		<Form form={form} initialValues={values}>

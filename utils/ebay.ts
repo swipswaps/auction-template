@@ -1,4 +1,7 @@
 import { DEFAULT_SITE_ID } from "./ebayApi";
+
+export const EBAY_CATEGORY_SEPARATOR = ":";
+
 export type EbayItemSeller = {
 	UserID: string;
 	FeedbackRatingStar: string;
@@ -54,7 +57,7 @@ export type EbayItem = {
 	HitCount?: number;
 	PrimaryCategoryIDPath?: string;
 	Storefront?: EbayItemStorefront;
-	Country?: string;
+	Country?: EbayCountry;
 	HandlingTime?: number;
 	ConditionID?: number;
 	ConditionDisplayName?: string;
@@ -67,6 +70,10 @@ export type EbayItem = {
 		ListedShippingServiceCost: EbayItemPrice;
 	};
 	ListingType: string;
+	/**
+	 * distinguish custom props that were added by us with _ prefix
+	 */
+	_displaySellerName: string;
 };
 
 export type EbayPrimaryCategory = {
@@ -150,29 +157,41 @@ export type EbaySiteName =
 	| "eBay Poland"
 	| "eBay Singapore";
 
-export type EbaySiteGlobalId =
-	| "EBAY-US"
-	| "EBAY-ENCA"
-	| "EBAY-GB"
-	| "EBAY-AU"
-	| "EBAY-AT"
-	| "EBAY-FRBE"
-	| "EBAY-FR"
-	| "EBAY-DE"
-	| "EBAY-MOTOR"
-	| "EBAY-IT"
-	| "EBAY-NLBE"
-	| "EBAY-NL"
-	| "EBAY-ES"
-	| "EBAY-CH"
-	| "EBAY-HK"
-	| "EBAY-IN"
-	| "EBAY-IE"
-	| "EBAY-MY"
-	| "EBAY-FRCA"
-	| "EBAY-PH"
-	| "EBAY-PL"
-	| "EBAY-SG";
+export type EbayCountry =
+	| "US"
+	| "ENCA"
+	| "GB"
+	| "AU"
+	| "AT"
+	| "FRBE"
+	| "FR"
+	| "DE"
+	| "MOTOR"
+	| "IT"
+	| "NLBE"
+	| "NL"
+	| "ES"
+	| "CH"
+	| "HK"
+	| "IN"
+	| "IE"
+	| "MY"
+	| "FRCA"
+	| "PH"
+	| "PL"
+	| "SG";
+
+export const getTldFromEbayCountry = (country: EbayCountry) => {
+	// TODO: extend list
+	switch (country) {
+		case "DE":
+			return "de";
+		default:
+			return "com";
+	}
+};
+
+export type EbaySiteGlobalId = `EBAY-${EbayCountry}`;
 
 export type EbayMapping = {
 	siteId: EbaySiteId;
