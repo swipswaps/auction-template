@@ -34,7 +34,6 @@
 
 .auction-template-wrapper * {
 	box-sizing: border-box;
-	font-family: var(--font-family-sans-serif);
 }
 .auction-template-wrapper::after {
 	box-sizing: border-box;

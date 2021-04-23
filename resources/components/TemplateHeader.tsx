@@ -42,7 +42,7 @@ const TemplateHeader = ({ item }: { item: EbayItem }) => {
 			>
 				{item?._displaySellerName}
 			</a>
-			<ul className="navbar-nav ml-md-auto">
+			<ul className="navbar-nav ml-md-auto flex-row">
 				{navLinks.map(({ href, text }, i) => (
 					<li className="nav-item" key={i}>
 						<a className="nav-link" href={href}>

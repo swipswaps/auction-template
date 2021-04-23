@@ -4,7 +4,10 @@ import TemplateImport from "../components/TemplateImport";
 
 const TemplateWrapper = ({ children = <></> }: { children: ReactNode }) => {
 	return (
-		<div className="auction-template-wrapper">
+		<div
+			className="auction-template-wrapper"
+			style={{ fontFamily: "var(--font-family-sans-serif)" }}
+		>
 			<div className="container">
 				{children}
 				<TemplateFooter />
