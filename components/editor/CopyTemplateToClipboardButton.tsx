@@ -11,7 +11,7 @@ const CopyTemplateToClipboardButton = ({ item }) => {
 	};
 
 	return (
-		<Button type="primary" onClick={handleCopyClick}>
+		<Button type="primary" onClick={() => handleCopyClick()}>
 			Copy
 		</Button>
 	);

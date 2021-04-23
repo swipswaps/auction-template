@@ -1,35 +1,28 @@
 import React from "react";
-import { Col, Row } from "react-bootstrap";
-import TemplateImageGallery from "../components/TemplateImageGallery";
+import TemplateImage from "../components/TemplateImage";
 import TemplateHeader from "../components/TemplateHeader";
-import TemplateFooter from "../components/TemplateFooter";
 import { EbayItem } from "../../utils/ebay";
-import TemplateImport from "../components/TemplateImport";
 import TemplateWrapper from "../components/TemplateWrapper";
 import TemplateMetaInfo from "../components/TemplateMetaInfo";
 import TemplateTabs from "../components/TemplateTabs";
 
-// TODO: add tabs again
-
 const Solstorm = ({ item }: { item: EbayItem }) => {
 	return (
 		<TemplateWrapper>
-			<TemplateImport />
 			<TemplateHeader item={item} />
-			<Row>
-				<Col md={6} className="p-4">
-					<TemplateImageGallery item={item} />
-				</Col>
-				<Col md={6} className="p-4">
+			<div className="row">
+				<div className="py-4 col-12 col-md-6">
+					<TemplateImage item={item} />
+				</div>
+				<div className="py-4 col-12 col-md-6">
 					<TemplateMetaInfo item={item} />
-				</Col>
-			</Row>
-			{/* <Row>
-					<Col xs={12}>
-						<TemplateTabs item={item} />
-					</Col>
-				</Row> */}
-			<TemplateFooter />
+				</div>
+			</div>
+			<div className="row">
+				<div className="col-12">
+					<TemplateTabs item={item} />
+				</div>
+			</div>
 		</TemplateWrapper>
 	);
 };

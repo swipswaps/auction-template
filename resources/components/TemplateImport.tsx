@@ -11,10 +11,6 @@ const TemplateImport = () => {
 				rel="stylesheet"
 				href="https://auction-template.vercel.app/at/assets/at-lux.css"
 			/>
-			<link
-				rel="stylesheet"
-				href="https://auction-template.vercel.app/at/assets/at-pure.css"
-			/>
 		</>
 	);
 };

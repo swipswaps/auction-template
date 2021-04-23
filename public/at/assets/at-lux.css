@@ -31,8 +31,10 @@
 	--font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
 		"Liberation Mono", "Courier New", monospace;
 }
+
 .auction-template-wrapper * {
 	box-sizing: border-box;
+	font-family: var(--font-family-sans-serif);
 }
 .auction-template-wrapper::after {
 	box-sizing: border-box;

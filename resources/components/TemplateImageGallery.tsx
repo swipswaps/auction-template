@@ -2,44 +2,55 @@ import React from "react";
 import { EbayItem } from "../../utils/ebay";
 
 const TemplateImageGallery = ({ item }: { item: EbayItem }) => {
-	const imgWidth = "75px";
-	const gridGap = "1em";
 	const images = item?.PictureURL;
+
+	const createIdFromIndex = (index: number) => `image-${index + 1}`;
+
+	const getDescriptiveTextFromIndex = (index: number) =>
+		`${item?.Title} #${index + 1}`;
 
 	return (
 		<>
 			<div className="gallery">
-				<div className="big-picture-container">
-					{images.map((_, i) => {
+				<div>
+					{images.map((src, i) => {
 						return (
-							<div key={i} id={`item-${i + 1}`} className="pic-container"></div>
+							<div
+								key={i}
+								id={createIdFromIndex(i)}
+								className="pic-container"
+							/>
 						);
 					})}
-					{images.map((image, i) => {
+					{images.map((src, i) => {
 						return (
-							<a key={i} className="item big-picture" href={`#item-${i + 1}`}>
+							<a
+								key={i}
+								className="item big-picture"
+								href={`#${createIdFromIndex(i)}`}
+							>
 								<img
-									src={image}
-									alt={`${item?.Title} #${i + 1}:`}
-									title={`${item?.Title} #${i + 1}:`}
+									src={src}
+									alt={getDescriptiveTextFromIndex(i)}
+									title={getDescriptiveTextFromIndex(i)}
 								/>
 							</a>
 						);
 					})}
 				</div>
-				<div className="template-grid">
-					{images.map((image, i) => {
+				<div className="row justify-content-center align-items-center">
+					{images.map((src, i) => {
 						return (
 							<div
-								className="template-grid-item"
+								className="col-6 col-md-4 col-lg-3 template-grid-item "
 								style={{
-									backgroundImage: `url("${image}")`,
+									backgroundImage: `url("${src}")`,
 									backgroundSize: "cover",
 									backgroundPosition: "center",
 								}}
 								key={i}
 							>
-								<a href={`#item-${i + 1}`}>
+								<a href={`#${createIdFromIndex(i)}`}>
 									<div />
 								</a>
 							</div>
@@ -51,12 +62,6 @@ const TemplateImageGallery = ({ item }: { item: EbayItem }) => {
 				.gallery {
 					position: relative;
 				}
-				.template-grid {
-					display: grid;
-					grid-template-columns: auto auto auto auto;
-					grid-gap: ${gridGap};
-					justify-content: center;
-				}
 				.template-grid-item {
 					display: flex;
 					justify-content: center;
@@ -65,8 +70,8 @@ const TemplateImageGallery = ({ item }: { item: EbayItem }) => {
 				.template-grid-item a,
 				.template-grid-item div {
 					object-fit: cover;
-					width: ${imgWidth};
-					min-height: ${imgWidth};
+					width: 75px;
+					min-height: 75px;
 				}
 				.gallery .pic-container {
 					display: none !important;
