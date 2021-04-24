@@ -10,12 +10,14 @@ import { BootswatchTheme } from "../../utils/themes";
 const Solstorm = ({
 	item,
 	theme = "cerulean",
+	footer = true,
 }: {
 	item: EbayItem;
 	theme?: BootswatchTheme;
+	footer?: boolean;
 }) => {
 	return (
-		<TemplateWrapper theme={theme}>
+		<TemplateWrapper theme={theme} footer={footer}>
 			<TemplateHeader item={item} />
 			<div className="row">
 				<div className="py-4 col-12 col-md-6">

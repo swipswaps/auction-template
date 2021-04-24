@@ -46,3 +46,11 @@ export const getEbayViewListingsUrlFromSellerName = (
 	`${getLocalizedEbayUrl(
 		country,
 	)}/sch/${sellerName}/m.html?_nkw=&_armrs=1&_ipg=&_from=`;
+
+export const getEbayBuyNowUrlFromItemId = (
+	itemId: string,
+	country: EbayCountry,
+) =>
+	`https://offer.ebay.${getTldFromEbayCountry(
+		country,
+	)}/ws/eBayISAPI.dll?BinConfirm&item=${itemId}`;

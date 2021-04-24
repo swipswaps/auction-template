@@ -37,7 +37,7 @@ const editor = () => {
 			title: "Preview auction template",
 			content: item && (
 				<Card>
-					<Solstorm item={item} theme={theme} />
+					<Solstorm item={item} theme={theme} footer={false} />
 				</Card>
 			),
 		},

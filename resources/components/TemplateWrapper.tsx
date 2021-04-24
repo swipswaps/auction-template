@@ -6,9 +6,11 @@ import TemplateImport from "../components/TemplateImport";
 const TemplateWrapper = ({
 	children,
 	theme,
+	footer,
 }: {
 	children: ReactNode;
 	theme: BootswatchTheme;
+	footer: boolean;
 }) => {
 	return (
 		<div
@@ -17,7 +19,7 @@ const TemplateWrapper = ({
 		>
 			<div className="container">
 				{children}
-				<TemplateFooter />
+				{footer && <TemplateFooter />}
 				<TemplateImport theme={theme} />
 			</div>
 		</div>
