@@ -1,5 +1,6 @@
 import React from "react";
 import { EbayItem } from "../../utils/ebay";
+import { sanitizeLinebreaks } from "../../utils/misc";
 import {
 	sanitizeCategoryStringForItem,
 	sanitizeCurrentPriceForItem,
@@ -18,7 +19,7 @@ const TemplateMetaInfo = ({ item }: { item: EbayItem }) => {
 			{item?.Description?.length > 0 && (
 				<>
 					<hr />
-					<p className="text-secondary m-0">{item?.Description}</p>
+					<p className="m-0">{sanitizeLinebreaks(item?.Description)}</p>
 				</>
 			)}
 		</>

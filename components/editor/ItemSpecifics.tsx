@@ -12,7 +12,7 @@ const ItemSpecifics = () => {
 	const { item } = useSelector((state: IStore) => state.ebayItem);
 
 	return (
-		<Form.Item {...formItemLayout} label="Edit displayed specifics">
+		<Form.Item {...formItemLayout} label="Edit displayed highlights">
 			{item.ItemSpecifics.NameValueList.map((pair, i) => (
 				<ItemSpecific {...{ pair, i }} key={i} />
 			))}

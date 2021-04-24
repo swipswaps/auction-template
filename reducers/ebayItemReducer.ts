@@ -37,6 +37,7 @@ const ebayItemReducer = (
 				item: {
 					...payload.item,
 					_displaySellerName: payload.item.Seller.UserID,
+					_additionalSections: [],
 				},
 			};
 		case EbayItemAction.Failure:

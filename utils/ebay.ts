@@ -24,6 +24,10 @@ export type EbayItemNameValuePair = {
 	Value: string | Array<string>;
 };
 
+export type EbayItemAdditionalSection = {
+	heading: string;
+	content: string;
+};
 /**
  * reduced properties, since not all are needed
  */
@@ -74,6 +78,7 @@ export type EbayItem = {
 	 * distinguish custom props that were added by us with _ prefix
 	 */
 	_displaySellerName: string;
+	_additionalSections: Array<EbayItemAdditionalSection>;
 };
 
 export type EbayPrimaryCategory = {

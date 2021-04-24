@@ -1,3 +1,5 @@
+import React from "react";
+
 export const sanitizeUriComponent = (uriComponent: any) =>
 	encodeURIComponent(uriComponent);
 
@@ -17,3 +19,11 @@ export const capitalizeString = (s: string) => {
 	if (!s) return s;
 	return s[0].toUpperCase() + s.substr(1).toLowerCase();
 };
+
+export const sanitizeLinebreaks = (s: string) =>
+	s.split("\n").map((item) => (
+		<span>
+			{item}
+			<br />
+		</span>
+	));

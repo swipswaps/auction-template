@@ -197,3 +197,66 @@ export const setCurrency = (currency: string) => async (
 		},
 	});
 };
+
+export const addAdditionalSection = () => async (
+	dispatch: any,
+	getState: () => IStore,
+) => {
+	dispatch({
+		type: EbayItemAction.Set,
+		payload: {
+			item: produce(getState().ebayItem.item, (itemDraft) => {
+				itemDraft._additionalSections.push({
+					heading: "",
+					content: "",
+				});
+				return itemDraft;
+			}),
+		},
+	});
+};
+
+export const deleteAdditionalSection = (i: number) => async (
+	dispatch: any,
+	getState: () => IStore,
+) => {
+	dispatch({
+		type: EbayItemAction.Set,
+		payload: {
+			item: produce(getState().ebayItem.item, (itemDraft) => {
+				itemDraft._additionalSections.splice(i, 1);
+				return itemDraft;
+			}),
+		},
+	});
+};
+
+export const setAdditionalSectionHeading = (
+	i: number,
+	heading: string,
+) => async (dispatch: any, getState: () => IStore) => {
+	dispatch({
+		type: EbayItemAction.Set,
+		payload: {
+			item: produce(getState().ebayItem.item, (itemDraft) => {
+				itemDraft._additionalSections[i].heading = heading;
+				return itemDraft;
+			}),
+		},
+	});
+};
+
+export const setAdditionalSectionContent = (
+	i: number,
+	content: string,
+) => async (dispatch: any, getState: () => IStore) => {
+	dispatch({
+		type: EbayItemAction.Set,
+		payload: {
+			item: produce(getState().ebayItem.item, (itemDraft) => {
+				itemDraft._additionalSections[i].content = content;
+				return itemDraft;
+			}),
+		},
+	});
+};

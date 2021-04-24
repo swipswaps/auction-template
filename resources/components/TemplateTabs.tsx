@@ -1,6 +1,6 @@
 import React from "react";
 import { EbayItem } from "../../utils/ebay";
-import { sanitizeSpecificValue } from "../../utils/misc";
+import { sanitizeLinebreaks, sanitizeSpecificValue } from "../../utils/misc";
 
 const TemplateTabs = ({ item }: { item: EbayItem }) => {
 	return (
@@ -13,6 +13,12 @@ const TemplateTabs = ({ item }: { item: EbayItem }) => {
 					</li>
 				))}
 			</ul>
+			{item?._additionalSections?.map((section, i) => (
+				<>
+					<h3>{section.heading}</h3>
+					<p>{sanitizeLinebreaks(section.content)}</p>
+				</>
+			))}
 		</>
 	);
 };

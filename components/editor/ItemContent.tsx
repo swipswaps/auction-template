@@ -5,6 +5,7 @@ import { IStore } from "../../store";
 import { formItemLayout } from "../../utils/applicationConstants";
 import ItemSpecifics from "./ItemSpecifics";
 import ItemMetaInfo from "./ItemMetaInfo";
+import ItemAdditionalSections from "./ItemAdditionalSections";
 
 const ItemContent = () => {
 	const { item } = useSelector((state: IStore) => state.ebayItem);
@@ -15,6 +16,7 @@ const ItemContent = () => {
 				<>
 					<ItemMetaInfo />
 					<ItemSpecifics />
+					<ItemAdditionalSections />
 				</>
 			) : (
 				<Empty description="No item loaded." />

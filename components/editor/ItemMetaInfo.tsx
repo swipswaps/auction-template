@@ -1,9 +1,14 @@
-import { Input, Form, Carousel, Image, Row, Col } from "antd";
+import { Input, Form, Row, Col } from "antd";
+const { TextArea } = Input;
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IStore } from "../../store";
-import { formItemLayout, gutter } from "../../utils/applicationConstants";
+import {
+	formItemLayout,
+	gutter,
+	textAreaLayout,
+} from "../../utils/applicationConstants";
 import {
 	setCurrency,
 	setDescription,
@@ -79,9 +84,9 @@ const ItemMetaInfo = () => {
 				label="Edit displayed item description"
 				name="description"
 			>
-				<Input.TextArea
+				<TextArea
 					placeholder="Displayed item description"
-					rows={5}
+					{...textAreaLayout}
 					onBlur={(e: React.FocusEvent<HTMLTextAreaElement>) =>
 						dispatch(setDescription(e.target.value))
 					}
