@@ -5,6 +5,7 @@ import CopyTemplateToClipboardButton from "../components/editor/CopyTemplateToCl
 import EditorSettings from "../components/editor/EditorSettings";
 import ItemContent from "../components/editor/ItemContent";
 import ItemSelector from "../components/editor/ItemSelector";
+import ThemeSelector from "../components/editor/ThemeSelector";
 import Container from "../components/layout/Container";
 import TitleAndDesc from "../components/meta/TitleAndDesc";
 import Solstorm from "../resources/templates/Solstorm";
@@ -12,6 +13,8 @@ import { IStore } from "../store";
 
 const editor = () => {
 	const { item } = useSelector((state: IStore) => state.ebayItem);
+	const { theme } = useSelector((state: IStore) => state.editor);
+
 	const editorContent = [
 		{
 			title: "Load eBay item",
@@ -27,18 +30,29 @@ const editor = () => {
 			content: <ItemContent />,
 		},
 		{
+			title: "Select theme",
+			content: item && <ThemeSelector />,
+		},
+		{
 			title: "Preview auction template",
 			content: item && (
 				<Card>
-					<Solstorm item={item} />
+					<Solstorm item={item} theme={theme} />
 				</Card>
 			),
 		},
 		{
 			title: "Copy product description",
-			content: item && <CopyTemplateToClipboardButton item={item} />,
+			content: item && (
+				<CopyTemplateToClipboardButton item={item} theme={theme} />
+			),
+		},
+		{
+			title: "Relax",
+			content: item && <p>Relax</p>,
 		},
 	];
+
 	return (
 		<>
 			<Container spacing style={{ paddingBottom: 0 }}>

@@ -4,16 +4,16 @@ import { sanitizeSpecificValue } from "../../utils/misc";
 
 const TemplateTabs = ({ item }: { item: EbayItem }) => {
 	return (
-		<div>
+		<>
 			<h3>Highlights</h3>
-			<ul className="list-group list-group-flush">
+			<ul>
 				{item?.ItemSpecifics.NameValueList.map((specific, i) => (
-					<li key={i} className="list-group-item">
+					<li key={i}>
 						{specific.Name}: {sanitizeSpecificValue(specific.Value)}
 					</li>
 				))}
 			</ul>
-		</div>
+		</>
 	);
 };
 

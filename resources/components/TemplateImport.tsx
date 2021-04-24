@@ -1,16 +1,11 @@
 import React from "react";
+import { BootswatchTheme, getThemeCssUrl } from "../../utils/themes";
 
-const TemplateImport = () => {
+const TemplateImport = ({ theme }: { theme: BootswatchTheme }) => {
 	return (
 		<>
-			<link
-				rel="stylesheet"
-				href="https://auction-template.vercel.app/at/assets/at-bootstrap.css"
-			/>
-			<link
-				rel="stylesheet"
-				href="https://auction-template.vercel.app/at/assets/at-lux.css"
-			/>
+			<link rel="stylesheet" href={getThemeCssUrl("bootstrap")} />
+			<link rel="stylesheet" href={getThemeCssUrl(theme)} />
 		</>
 	);
 };

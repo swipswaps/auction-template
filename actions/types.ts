@@ -17,4 +17,5 @@ export enum EditorAction {
 	SellerName = "SET_SELLER_NAME",
 	SiteId = "SET_SITE_ID",
 	AgreedToTerms = "SET_AGREED_TO_TERMS",
+	Theme = "SET_THEME",
 }

@@ -1,4 +1,5 @@
 import { AllowedEbaySiteId } from "../utils/ebay";
+import { BootswatchTheme } from "../utils/themes";
 import { EditorAction } from "./types";
 
 export const setSiteId = (siteId: AllowedEbaySiteId) => (dispatch) => {
@@ -37,5 +38,12 @@ export const setAgreedToTerms = (agreedToTerms: boolean) => (dispatch) => {
 	dispatch({
 		type: EditorAction.AgreedToTerms,
 		payload: { agreedToTerms },
+	});
+};
+
+export const setTheme = (theme: BootswatchTheme) => (dispatch) => {
+	dispatch({
+		type: EditorAction.Theme,
+		payload: { theme },
 	});
 };

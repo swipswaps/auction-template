@@ -118,10 +118,15 @@ const imprint = () => {
 						https://www.e-recht24.de
 					</ExternalLink>
 				</Typography.Paragraph>
-				<Typography.Title level={3}>Bildnachweis</Typography.Title>
+				<Typography.Title level={3}>Nachweis externer Quellen</Typography.Title>
 				<Typography.Paragraph>
 					Wir verwenden Illustrationen von{" "}
-					<ExternalLink href="https://undraw.co">undraw.co</ExternalLink>.
+					<ExternalLink href="https://undraw.co">undraw.co</ExternalLink>. Die
+					.css Dateien und Vorschaubilder der Themes stammen von{" "}
+					<ExternalLink href="https://bootswatch.com">
+						bootswatch.com
+					</ExternalLink>
+					.
 				</Typography.Paragraph>
 			</Container>
 		</>

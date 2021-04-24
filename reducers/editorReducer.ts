@@ -1,6 +1,7 @@
 import { DEFAULT_SITE_ID } from "./../utils/ebayApi";
 import { EditorAction } from "../actions/types";
 import { AllowedEbaySiteId } from "../utils/ebay";
+import { BootswatchTheme } from "../utils/themes";
 
 export interface IEditorReducer {
 	sellerName: string;
@@ -8,6 +9,7 @@ export interface IEditorReducer {
 	itemIdKnown: boolean;
 	siteId: AllowedEbaySiteId;
 	agreedToTerms: boolean;
+	theme: BootswatchTheme;
 }
 
 export const initialEditorReducerState: IEditorReducer = {
@@ -16,6 +18,7 @@ export const initialEditorReducerState: IEditorReducer = {
 	itemIdKnown: false,
 	siteId: DEFAULT_SITE_ID,
 	agreedToTerms: false,
+	theme: "cerulean",
 };
 
 const ebayItemReducer = (state = initialEditorReducerState, action) => {
@@ -42,6 +45,11 @@ const ebayItemReducer = (state = initialEditorReducerState, action) => {
 				...payload,
 			};
 		case EditorAction.AgreedToTerms:
+			return {
+				...state,
+				...payload,
+			};
+		case EditorAction.Theme:
 			return {
 				...state,
 				...payload,

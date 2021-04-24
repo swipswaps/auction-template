@@ -5,10 +5,17 @@ import { EbayItem } from "../../utils/ebay";
 import TemplateWrapper from "../components/TemplateWrapper";
 import TemplateMetaInfo from "../components/TemplateMetaInfo";
 import TemplateTabs from "../components/TemplateTabs";
+import { BootswatchTheme } from "../../utils/themes";
 
-const Solstorm = ({ item }: { item: EbayItem }) => {
+const Solstorm = ({
+	item,
+	theme = "cerulean",
+}: {
+	item: EbayItem;
+	theme?: BootswatchTheme;
+}) => {
 	return (
-		<TemplateWrapper>
+		<TemplateWrapper theme={theme}>
 			<TemplateHeader item={item} />
 			<div className="row">
 				<div className="py-4 col-12 col-md-6">

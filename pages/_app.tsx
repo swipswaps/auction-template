@@ -7,8 +7,6 @@ import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import { Provider } from "react-redux";
 import store from "../store";
-import "../public/at/assets/at-bootstrap.css";
-import "../public/at/assets/at-lux.css";
 
 const _app = ({ Component, pageProps }) => {
 	return (

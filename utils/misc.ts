@@ -12,3 +12,8 @@ export const copyToClipboard = (value: string) => {
 	document.execCommand("copy");
 	document.body.removeChild(textArea);
 };
+
+export const capitalizeString = (s: string) => {
+	if (!s) return s;
+	return s[0].toUpperCase() + s.substr(1).toLowerCase();
+};
