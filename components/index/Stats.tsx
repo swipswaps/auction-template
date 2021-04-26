@@ -36,7 +36,7 @@ const Stats = ({ stats }: { stats: StatsResponse }) => {
 			prefix: <TeamOutlined />,
 		},
 		{
-			title: "Unique eBay countries",
+			title: "Unique countries",
 			value: stats.load.uniqueSiteIds,
 			prefix: <GlobalOutlined />,
 		},
