@@ -1,6 +1,7 @@
 import { FormItemProps } from "antd";
 import { Gutter } from "antd/lib/grid/row";
 import { TextAreaProps } from "antd/lib/input";
+import { HTMLProps } from "react";
 
 export const gutter: [Gutter, Gutter] = [32, 32];
 export const formItemLayout: FormItemProps = {
@@ -9,4 +10,9 @@ export const formItemLayout: FormItemProps = {
 };
 export const textAreaLayout: TextAreaProps = {
 	rows: 5,
+};
+export const hideListStyle: React.CSSProperties = {
+	margin: 0,
+	padding: 0,
+	listStyleType: "none",
 };

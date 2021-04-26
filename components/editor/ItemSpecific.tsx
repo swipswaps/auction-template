@@ -3,7 +3,7 @@ import { Form, Col, Row, Input, Button } from "antd";
 import { EbayItemNameValuePair } from "../../utils/ebay";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { gutter } from "../../utils/applicationConstants";
-import { DeleteOutlined } from "@ant-design/icons";
+import { DeleteOutlined, DragOutlined } from "@ant-design/icons";
 import {
 	deleteNameValuePair,
 	setNameValuePairName,
@@ -42,7 +42,7 @@ const ItemSpecific = ({
 	return (
 		<Form form={form} initialValues={values}>
 			<Row gutter={md ? gutter : 0}>
-				<Col xs={24} sm={11}>
+				<Col xs={24} sm={9} md={10}>
 					<Form.Item name="name">
 						<Input
 							onBlur={(e: React.FocusEvent<HTMLInputElement>) =>
@@ -51,7 +51,7 @@ const ItemSpecific = ({
 						/>
 					</Form.Item>
 				</Col>
-				<Col xs={24} sm={11}>
+				<Col xs={24} sm={9} md={10}>
 					<Form.Item name="value">
 						<Input
 							onBlur={(e: React.FocusEvent<HTMLInputElement>) =>
@@ -60,7 +60,14 @@ const ItemSpecific = ({
 						/>
 					</Form.Item>
 				</Col>
-				<Col xs={24} sm={2}>
+				<Col xs={12} sm={3} md={2}>
+					<Form.Item>
+						<Button ghost type="primary" tabIndex={-1}>
+							<DragOutlined />
+						</Button>
+					</Form.Item>
+				</Col>
+				<Col xs={12} sm={3} md={2}>
 					<Form.Item>
 						<Button danger onClick={onDelete} tabIndex={-1}>
 							<DeleteOutlined />

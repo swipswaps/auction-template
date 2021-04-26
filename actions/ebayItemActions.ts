@@ -5,6 +5,7 @@ import { getFeedbackMessageForRequest } from "../utils/ebayFrontend";
 import { EbayItemAction } from "./types";
 import produce from "immer";
 import { IStore } from "../store";
+import { arrayMove } from "react-sortable-hoc";
 
 export const getItem = (itemId: string, siteId?: AllowedEbaySiteId) => async (
 	dispatch,
@@ -102,6 +103,25 @@ export const setNameValuePairValue = (i: number, value: string) => async (
 		payload: {
 			item: produce(getState().ebayItem.item, (itemDraft) => {
 				itemDraft.ItemSpecifics.NameValueList[i].Value = value;
+				return itemDraft;
+			}),
+		},
+	});
+};
+
+export const dragNameValuePair = (oldIndex: number, newIndex: number) => async (
+	dispatch: any,
+	getState: () => IStore,
+) => {
+	dispatch({
+		type: EbayItemAction.Set,
+		payload: {
+			item: produce(getState().ebayItem.item, (itemDraft) => {
+				itemDraft.ItemSpecifics.NameValueList = arrayMove(
+					itemDraft.ItemSpecifics.NameValueList,
+					oldIndex,
+					newIndex,
+				);
 				return itemDraft;
 			}),
 		},

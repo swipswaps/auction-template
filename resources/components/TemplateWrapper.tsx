@@ -13,10 +13,7 @@ const TemplateWrapper = ({
 	footer: boolean;
 }) => {
 	return (
-		<div
-			className="auction-template-wrapper"
-			style={{ fontFamily: "var(--font-family-sans-serif)" }}
-		>
+		<div className="auction-template-wrapper">
 			<div className="container">
 				{children}
 				{footer && <TemplateFooter />}

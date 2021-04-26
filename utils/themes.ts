@@ -24,10 +24,7 @@ const bootswatchThemes = [
 
 export type BootswatchTheme = typeof bootswatchThemes[number];
 
-const getBaseUrl = () =>
-	process.env.NODE_ENV === "development"
-		? ""
-		: "https://auction-template.vercel.app";
+const getBaseUrl = () => "https://auction-template.vercel.app";
 
 const getAssetUrl = () => `${getBaseUrl()}/at/assets`;
 

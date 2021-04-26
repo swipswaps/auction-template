@@ -1,5 +1,5 @@
 import React from "react";
-import { EbayItem } from "../../utils/ebay";
+import { EbayItem, isGermanListing } from "../../utils/ebay";
 import {
 	getEbayAccountUrlFromSellerName,
 	getEbayFeedbackUrlFromSellerName,
@@ -27,7 +27,7 @@ const TemplateHeader = ({ item }: { item: EbayItem }) => {
 				item?.Seller?.UserID,
 				item?.Country,
 			),
-			text: "Reviews",
+			text: isGermanListing(item) ? "Bewertungen" : "Reviews",
 		},
 	];
 

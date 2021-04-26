@@ -28,6 +28,16 @@ export type EbayItemAdditionalSection = {
 	heading: string;
 	content: string;
 };
+
+export type EbayItemListingType =
+	| "AdType"
+	| "Auction"
+	| "Chinese"
+	| "CustomCode"
+	| "FixedPriceItem"
+	| "LeadGeneration"
+	| "PersonalOffer"
+	| "Unknown";
 /**
  * reduced properties, since not all are needed
  */
@@ -51,7 +61,7 @@ export type EbayItem = {
 	Site?: string;
 	TimeLeft?: string;
 	Title: string;
-	BuyItNowAvailable?: boolean;
+	BuyItNowAvailable: boolean;
 	ConvertedBuyItNowPrice?: EbayItemPrice;
 	PaymentMethods?: Array<string>;
 	MinimumToBid?: EbayItemPrice;
@@ -73,12 +83,12 @@ export type EbayItem = {
 		ShippingServiceCost: EbayItemPrice;
 		ListedShippingServiceCost: EbayItemPrice;
 	};
-	ListingType: string;
+	ListingType: EbayItemListingType;
 	/**
 	 * distinguish custom props that were added by us with _ prefix
 	 */
-	_displaySellerName: string;
-	_additionalSections: Array<EbayItemAdditionalSection>;
+	_displaySellerName?: string;
+	_additionalSections?: Array<EbayItemAdditionalSection>;
 };
 
 export type EbayPrimaryCategory = {
@@ -248,3 +258,14 @@ export const getMappingFromSiteId = (
 		]
 	);
 };
+
+export const isItemFixedPriceItem = (item: EbayItem) =>
+	item?.ListingType === "FixedPriceItem";
+
+export const isItemAuction = (item: EbayItem) =>
+	item?.ListingType === "Chinese" || item?.ListingType === "Auction";
+
+export const isBuyNowAvailableForItem = (item: EbayItem) =>
+	item?.BuyItNowAvailable;
+
+export const isGermanListing = (item: EbayItem) => item?.Country === "DE";

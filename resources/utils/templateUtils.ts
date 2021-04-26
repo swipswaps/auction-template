@@ -2,6 +2,7 @@ import {
 	EbayCountry,
 	EbayItem,
 	getTldFromEbayCountry,
+	isBuyNowAvailableForItem,
 } from "./../../utils/ebay";
 import { ReactNode } from "react";
 import ReactDOMServer from "react-dom/server";
@@ -16,15 +17,23 @@ export const sanitizeCategoryStringForItem = (categoryString: string) =>
 const getCurrencyForItem = (item: EbayItem) =>
 	item?.ConvertedCurrentPrice?.CurrencyID;
 
-export const sanitizeCurrentPriceForItem = (
-	item: EbayItem,
-) => `${item?.ConvertedCurrentPrice?.Value?.toFixed(2)}${" "}
+export const sanitizeCurrentPriceForItem = (item: EbayItem) =>
+	isBuyNowAvailableForItem(item)
+		? `${item?.ConvertedBuyItNowPrice?.Value?.toFixed(2)}${" "}
+	${getCurrencyForItem(item)}`
+		: `${item?.ConvertedCurrentPrice?.Value?.toFixed(2)}${" "}
 	${getCurrencyForItem(item)}`;
 
 export const sanitizeShippingCostForItem = (
 	item: EbayItem,
 ) => `${item?.ShippingCostSummary?.ShippingServiceCost?.Value?.toFixed(2)}${" "}
 		${getCurrencyForItem(item)}`;
+
+const getShippingCostForItem = (item: EbayItem) =>
+	item?.ShippingCostSummary?.ShippingServiceCost?.Value;
+
+export const hasFreeShipping = (item: EbayItem) =>
+	getShippingCostForItem(item) === 0;
 
 const getLocalizedEbayUrl = (country: EbayCountry) =>
 	`https://www.ebay.${getTldFromEbayCountry(country)}`;
@@ -54,3 +63,8 @@ export const getEbayBuyNowUrlFromItemId = (
 	`https://offer.ebay.${getTldFromEbayCountry(
 		country,
 	)}/ws/eBayISAPI.dll?BinConfirm&item=${itemId}`;
+
+export const getEbayBidNowUrlFromItemId = (
+	itemId: string,
+	country: EbayCountry,
+) => `${getLocalizedEbayUrl(country)}/itm/${itemId}?ViewItem=&cta=placebid`;
