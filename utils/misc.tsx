@@ -53,6 +53,4 @@ export const findModeOfArray = (array: Array<any>) => {
 export const isDev = () => process.env.NODE_ENV === "development";
 
 export const getApplicationBaseUrl = () =>
-	`http${isDev ? "" : "s"}://${
-		isDev ? "localhost:3000" : "auction-template.vercel.app"
-	}`;
+	"https://auction-template.vercel.app";

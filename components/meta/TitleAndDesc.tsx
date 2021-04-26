@@ -17,7 +17,7 @@ const TitleAndDesc = ({ title = "", desc = "" }) => {
 			<meta property="og:title" content={title} />
 			<meta property="og:description" content={desc} />
 			<meta name="twitter:title" content={APPLICATION_NAME} />
-			<meta name="twitter:description" content="Best PWA App in the world" />
+			<meta name="twitter:description" content={desc} />
 			<meta httpEquiv="language" content={language} />
 			<meta name="language" content={language} />
 		</Head>

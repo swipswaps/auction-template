@@ -27,12 +27,17 @@ const index = ({ stats }: { stats: StatsResponse }) => {
 export default index;
 
 export async function getStaticProps() {
-	const stats: StatsResponse = await getStats();
+	// const stats: StatsResponse = await getStats();
 
+	// return {
+	// 	props: {
+	// 		stats,
+	// 	},
+	// 	revalidate: 1,
+	// };
 	return {
 		props: {
-			stats,
+			stats: null,
 		},
-		revalidate: 1,
 	};
 }

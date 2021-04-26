@@ -1,8 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import { connect } from "../../../db/connectionHandler";
 import copyDescModel, { ICopyDesc } from "../../../db/models/copyDescModel";
 import loadItemModel, { ILoadItem } from "../../../db/models/loadItemModel";
 import { findModeOfArray, getUniqueAmountOfArray } from "../../../utils/misc";
 import { BootswatchTheme } from "../../../utils/themes";
+connect();
 
 export type StatsResponse = {
 	load: {
