@@ -5,8 +5,10 @@ import Stats from "../components/index/Stats";
 import Usage from "../components/index/Usage";
 import Mission from "../components/index/Mission";
 import TitleAndDesc from "../components/meta/TitleAndDesc";
+import { getStats } from "../utils/api";
+import { StatsResponse } from "./api/stats";
 
-const index = () => {
+const index = ({ stats }: { stats: StatsResponse }) => {
 	return (
 		<>
 			<TitleAndDesc
@@ -16,7 +18,7 @@ const index = () => {
 			<Hero />
 			<Features />
 			<Mission />
-			<Stats />
+			<Stats stats={stats} />
 			<Usage />
 		</>
 	);
@@ -24,6 +26,13 @@ const index = () => {
 
 export default index;
 
-/**
- * TODO: make index isr to update statistics
- */
+export async function getStaticProps() {
+	const stats: StatsResponse = await getStats();
+
+	return {
+		props: {
+			stats,
+		},
+		revalidate: 1,
+	};
+}

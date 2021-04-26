@@ -43,7 +43,8 @@ const ItemSelector = () => {
 	const handleAgreedToTermsToggle = () =>
 		dispatch(setAgreedToTerms(!agreedToTerms));
 
-	const handleLoadItemClick = () => dispatch(getItem(itemId, Number(siteId)));
+	const handleLoadItemClick = () =>
+		dispatch(getItem(itemId, itemIdKnown, Number(siteId)));
 
 	return (
 		<>

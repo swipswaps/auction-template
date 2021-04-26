@@ -1,3 +1,5 @@
+import { getApplicationBaseUrl } from "./misc";
+
 const bootswatchThemes = [
 	"cerulean",
 	"cosmo",
@@ -24,9 +26,7 @@ const bootswatchThemes = [
 
 export type BootswatchTheme = typeof bootswatchThemes[number];
 
-const getBaseUrl = () => "https://auction-template.vercel.app";
-
-const getAssetUrl = () => `${getBaseUrl()}/at/assets`;
+const getAssetUrl = () => `${getApplicationBaseUrl()}/at/assets`;
 
 export const getThemeCssUrl = (theme: BootswatchTheme | "bootstrap") =>
 	`${getAssetUrl()}/${theme}.css`;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "./Container";
 import { Affix, Typography, Button, Divider, Drawer, Space } from "antd";
 import {
@@ -10,17 +10,41 @@ import {
 import { MenuOutlined, CloseOutlined } from "@ant-design/icons";
 import InternalLink from "../misc/InternalLink";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
+import { useRouter } from "next/router";
 
 const Header = () => {
+	const isOpenProp = "#drawer-open";
+	const router = useRouter();
 	const { md } = useBreakpoint();
 	const [visible, setVisible] = useState(false);
 
+	const containsOpenProp = (path: string) => path.includes(isOpenProp);
+
+	useEffect(() => {
+		if (router) {
+			setVisible(containsOpenProp(router.asPath));
+		}
+	}, [router]);
+
 	const showDrawer = () => {
 		setVisible(true);
+		router.push(`${router.pathname}${isOpenProp}`);
 	};
 
 	const closeDrawer = () => {
 		setVisible(false);
+		if (containsOpenProp(router.asPath)) {
+			router.back();
+		}
+	};
+
+	const closeDrawerAndVisitHref = (href: string) => {
+		if (router.pathname !== href) {
+			setVisible(false);
+			router.replace(href);
+		} else {
+			closeDrawer();
+		}
 	};
 
 	const Logo = ({ menu = false }) => (
@@ -91,17 +115,20 @@ const Header = () => {
 				{headerLinks.map((link, i) => (
 					<span key={i}>
 						{i !== 0 && <Divider style={{ margin: 0 }} />}
-						<InternalLink href={link.href}>
+						<Typography.Link>
 							<Typography.Title
 								level={5}
-								onClick={closeDrawer}
-								style={{ display: "block", padding: "1em 0", margin: 0 }}
+								onClick={() => closeDrawerAndVisitHref(link.href)}
+								style={{
+									display: "block",
+									padding: "1em 0",
+									margin: 0,
+									color: "unset",
+								}}
 							>
-								<InternalLink href={link.href}>
-									{link.icon} {link.displayText}
-								</InternalLink>
+								{link.icon} {link.displayText}
 							</Typography.Title>
-						</InternalLink>
+						</Typography.Link>
 					</span>
 				))}
 			</Drawer>

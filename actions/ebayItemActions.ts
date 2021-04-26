@@ -1,5 +1,5 @@
 import { EbayStatusCode } from "./../utils/ebayApi";
-import { getItemRequest } from "../utils/api";
+import { getItemRequest, saveLoadInDb } from "../utils/api";
 import { AllowedEbaySiteId } from "../utils/ebay";
 import { getFeedbackMessageForRequest } from "../utils/ebayFrontend";
 import { EbayItemAction } from "./types";
@@ -7,9 +7,11 @@ import produce from "immer";
 import { IStore } from "../store";
 import { arrayMove } from "react-sortable-hoc";
 
-export const getItem = (itemId: string, siteId?: AllowedEbaySiteId) => async (
-	dispatch,
-) => {
+export const getItem = (
+	itemId: string,
+	itemIdKnown: boolean,
+	siteId?: AllowedEbaySiteId,
+) => async (dispatch) => {
 	if (itemId.length > 0) {
 		dispatch({
 			type: EbayItemAction.Start,
@@ -22,12 +24,13 @@ export const getItem = (itemId: string, siteId?: AllowedEbaySiteId) => async (
 				!!item &&
 				Object.keys(item).length > 0 &&
 				status !== EbayStatusCode.Failure
-			)
+			) {
+				saveLoadInDb(itemId, itemIdKnown, siteId, item.Seller.UserID);
 				dispatch({
 					type: EbayItemAction.Success,
 					payload: { item, status, message },
 				});
-			else {
+			} else {
 				dispatch({
 					type: EbayItemAction.Failure,
 					payload: { status, message },

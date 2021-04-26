@@ -5,6 +5,9 @@ import { componentToHtml } from "../../resources/utils/templateUtils";
 import Solstorm from "../../resources/templates/Solstorm";
 import { EbayItem } from "../../utils/ebay";
 import { BootswatchTheme } from "../../utils/themes";
+import { useSelector } from "react-redux";
+import { IStore } from "../../store";
+import { saveCopyInDb } from "../../utils/api";
 
 const CopyTemplateToClipboardButton = ({
 	item,
@@ -13,7 +16,10 @@ const CopyTemplateToClipboardButton = ({
 	item: EbayItem;
 	theme: BootswatchTheme;
 }) => {
+	const { siteId } = useSelector((state: IStore) => state.editor);
+
 	const handleCopyClick = () => {
+		saveCopyInDb(item.ItemID, theme, item, siteId, item.Seller.UserID);
 		copyToClipboard(componentToHtml(<Solstorm item={item} theme={theme} />));
 		message.success("Copied Auction Template.");
 	};
