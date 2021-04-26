@@ -36,7 +36,7 @@ const Stats = ({ stats }: { stats: StatsResponse }) => {
 			prefix: <TeamOutlined />,
 		},
 		{
-			title: "Unique countries",
+			title: "User's countries",
 			value: stats.load.uniqueSiteIds,
 			prefix: <GlobalOutlined />,
 		},

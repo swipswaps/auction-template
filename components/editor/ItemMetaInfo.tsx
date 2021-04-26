@@ -17,6 +17,7 @@ import {
 	setShippingCost,
 	setTitle,
 } from "../../actions/ebayItemActions";
+import Tooltip from "../misc/Tooltip";
 
 // TODO: add images again
 
@@ -57,7 +58,11 @@ const ItemMetaInfo = () => {
 			</Form.Item> */}
 			<Form.Item
 				{...formItemLayout}
-				label="Edit displayed seller name"
+				label={
+					<Tooltip text="Seller name can either be a text or an url. Use an url that links to an image in order to display a custom logo in the template header">
+						Edit displayed seller name
+					</Tooltip>
+				}
 				name="seller"
 			>
 				<Input

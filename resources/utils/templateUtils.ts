@@ -68,3 +68,11 @@ export const getEbayBidNowUrlFromItemId = (
 	itemId: string,
 	country: EbayCountry,
 ) => `${getLocalizedEbayUrl(country)}/itm/${itemId}?ViewItem=&cta=placebid`;
+
+export const getEbayContactUrlFromSellerName = (
+	sellerName: string,
+	country: EbayCountry,
+) =>
+	`https://contact.ebay.${getTldFromEbayCountry(
+		country,
+	)}/ws/eBayISAPI.dll?ReturnUserEmail&requested=${sellerName}`;

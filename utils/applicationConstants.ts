@@ -37,4 +37,4 @@ const allowedDomains: Array<AllowedDomain> = [
 const allowedDomainsAsString = allowedDomains.map((domain) => String(domain));
 
 export const isAllowedDomain = (domain: string) =>
-	isDev() || allowedDomainsAsString.includes(domain);
+	allowedDomainsAsString.includes(domain);

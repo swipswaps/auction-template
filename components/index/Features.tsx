@@ -18,7 +18,7 @@ const Features = () => {
 			icon: <DownloadOutlined />,
 			title: "Automated",
 			description:
-				"Auction Template is connected to eBay and can retrieve your listings data - no need for manual entries.",
+				"Auction Template is connected to eBay and can retrieve your listing's data - no need for manual entries.",
 		},
 		{
 			icon: <CreditCardOutlined />,
