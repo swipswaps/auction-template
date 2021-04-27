@@ -11,6 +11,7 @@ import { MenuOutlined, CloseOutlined } from "@ant-design/icons";
 import InternalLink from "../misc/InternalLink";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { useRouter } from "next/router";
+import at_logo from "../../assets/at/auction-template-logo.svg";
 
 const Header = () => {
 	const isOpenProp = "#drawer-open";
@@ -49,7 +50,16 @@ const Header = () => {
 
 	const Logo = ({ menu = false }) => (
 		<Typography.Title level={4} style={{ margin: 0 }}>
-			{menu ? "Menu" : "Auction Template"}
+			{menu ? (
+				"Menu"
+			) : (
+				<img
+					src={at_logo}
+					height="30px"
+					alt={"Auction Template Logo"}
+					title={"Auction Template"}
+				/>
+			)}
 		</Typography.Title>
 	);
 
