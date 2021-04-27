@@ -18,7 +18,7 @@ const index = ({ stats }: { stats: StatsResponse }) => {
 			<Hero />
 			<Features />
 			<Mission />
-			{stats && <Stats stats={stats} />}
+			{/* {stats && <Stats stats={stats} />} */}
 			<Usage />
 		</>
 	);
